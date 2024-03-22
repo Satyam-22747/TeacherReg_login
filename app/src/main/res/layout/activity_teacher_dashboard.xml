@@ -27,7 +27,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/floating_btn_newCourse"
-        android:layout_marginLeft="280dp"
+        android:layout_gravity="center"
         android:foreground="@drawable/add_course_img"
         android:layout_marginTop="10dp"/>
 

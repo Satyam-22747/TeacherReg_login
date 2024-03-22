@@ -54,7 +54,10 @@
         android:layout_marginTop="20dp"
         android:textColor="#fff"
         android:transitionName="button_tran" />
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,4 +67,16 @@
         android:id="@+id/forgot_pass"
         android:layout_marginTop="20dp"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Registration"
+        android:layout_gravity="center"
+        android:textColor="#0091EA"
+        android:layout_alignParentRight="true"
+        android:id="@+id/new_user"
+        android:layout_marginTop="20dp"
+        />
+</RelativeLayout>
 </LinearLayout>

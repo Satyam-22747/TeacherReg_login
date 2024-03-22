@@ -2,7 +2,7 @@
     <string name="app_name">TeacherReg_login</string>
 
     <string-array name="Semester">
-        <item></item>
+        <item>Sem</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -12,4 +12,494 @@
         <item>7</item>
         <item>8</item>
     </string-array>
+
+    <string-array name="Mca_subjects_1_sem">
+        <item>Subject</item>
+        <item>Fundamental of Computers and Emerging Technologies</item>
+        <item>Problem Solving Using C</item>
+        <item>Principles of Management and  Communication</item>
+        <item>Discrete Mathematics</item>
+        <item>Computer Organization and  Architecture</item>
+        <item>Problem Soving Using C Lab</item>
+        <item>Computer Organization and  Architecture Lab</item>
+        <item>Professional Communication Lab</item>
+    </string-array>
+
+    <string-array name="Mca_subjects_2_sem">
+        <item>Theory of Automata and Formal Languages</item>
+        <item>Object Oriented Programming</item>
+        <item>Operating System</item>
+        <item>Database Management System</item>
+        <item>Data Structure and Analysis of Algorithms</item>
+        <item>Cyber Security</item>
+        <item>OOPs Lab</item>
+        <item>DBMS Lab</item>
+        <item>DAA Lab</item>
+    </string-array>
+
+    <string-array name="Mca_subjects_3_sem">
+        <item>Artificial Intelligence</item>
+        <item>Software Engineering</item>
+        <item>Computer Network</item>
+        <item>Cryptography  Network Security</item>
+        <item>Soft Computing</item>
+        <item>AI Lab</item>
+        <item>SE Lab</item>
+        <item>Mini Project</item>
+    </string-array>
+
+    <string-array name="Mca_subjects_4_sem">
+        <item>Pattern Recognition</item>
+        <item>Machine Learning</item>
+        <item>Internet of Things</item>
+        <item>Project</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_1_sem">
+        <item>Subject</item>
+        <item>Engineering Mathematics I</item>
+        <item>Engineering Physics</item>
+        <item>Basic Electrical Engineering</item>
+        <item>Professional Communication</item>
+        <item>Basic Mechanical Engineering</item>
+        <item>Engineering Physics Lab</item>
+        <item>Basic Electrical Engineering Lab</item>
+        <item>Professional Communication Lab</item>
+        <item>Workshop Practice</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_2_sem">
+        <item>Engineering Mathematics-II</item>
+        <item>Engineering Chemistry</item>
+        <item>Basic Electronics Engineering</item>
+        <item>Basic Civil Engineering</item>
+        <item>Computer System and Programming</item>
+        <item>Engineering Chemistry Lab</item>
+        <item>Basic Electronics Lab</item>
+        <item>Engineering Drawing Lab</item>
+        <item>Programming Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+    <string-array name="Civil_subjects_3_sem">
+        <item>Engineering Mathematics-III</item>
+        <item>Fluid Mechanics</item>
+        <item>Building Material and Construction</item>
+        <item>Surveying - I</item>
+        <item>Strength of Materials</item>
+        <item>Human Values and Professional Ethics</item>
+        <item>Fluid Mechanics Lab</item>
+        <item>Building Material Lab</item>
+        <item>Surveying - I Lab</item>
+        <item>Building Planning and Drawing Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_4_sem">
+        <item>Structural Analysis I</item>
+        <item>Surveying II</item>
+        <item>Hydraulics and Hydraulic Machines</item>
+        <item>Transportation Engineering, I</item>
+        <item>Environment and Ecology</item>
+        <item>Technical Writing and Presentation Skill</item>
+        <item>Surveying II Lab</item>
+        <item>Hydraulics and Hydraulic Machines Lab</item>
+        <item>Engineering Geology Lab</item>
+        <item>Transportation Engineering Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_5_sem">
+        <item>Managerial Economics / Industrial Management</item>
+        <item>Geotechnical Engineering-I</item>
+        <item>Environmental Engineering-I</item>
+        <item>Design of Concrete Structures I</item>
+        <item>Structural Analysis II</item>
+        <item>Geotechnical Engineering-I Lab</item>
+        <item>Environmental Engineering Lab</item>
+        <item>Concrete Lab</item>
+        <item>Structural Analysis Lab / Minor Project I</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_6_sem">
+        <item>Industrial Management/ Managerial Economics</item>
+        <item>Geotechnical Engineering II</item>
+        <item>Environmental Engineering II</item>
+        <item>WATER RESOURSES ENGINEERING I</item>
+        <item>Elective Department Course I</item>
+        <item>Geotechnical Engineering II Lab</item>
+        <item>STRUCTURAL DETAILING LAB</item>
+        <item>Survey Camp/ Minor Project II</item>
+        <item>Seminar</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_7_sem">
+        <item>Open Elective Course 1</item>
+        <item>Elective Department Course 2</item>
+        <item>Elective Department Course 3</item>
+        <item>Transportation Engineering II</item>
+        <item>Design of Steel Structures</item>
+        <item>CAD Lab 1</item>
+        <item>Industrial Training</item>
+        <item>Project I</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Civil_subjects_8_sem">
+        <item>Open Elective Course 2</item>
+        <item>Elective Department Course 4</item>
+        <item>Elective Department Course 5</item>
+        <item>Water Resources Engineering II</item>
+        <item>CAD Lab II</item>
+        <item>Project II</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="CS_subjects_1_sem">
+        <item>Subject</item>
+        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Mathematics-I</item>
+        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving English Language Lab</item>
+        <item>Engineering Graphics and Design L Mechanical Workshop Lab</item>
+        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Soft Skill I</item>
+    </string-array>
+
+    <string-array name="CS_subjects_2_sem">
+        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Mathematics-II</item>
+        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving / English Language Lab</item>
+        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
+        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Soft Skill I</item>
+    </string-array>
+
+    <string-array name="CS_subjects_3_sem">
+        <item>Engineering Science Course/Maths IV</item>
+        <item>Technical Communication/Universal Human values</item>
+        <item>Data Structure</item>
+        <item>Computer Organization and Architecture</item>
+        <item>Discrete Structures and Theory of Logic</item>
+        <item>Data Structures Using C Lab</item>
+        <item>Computer Organization Lab</item>
+        <item>Discrete Structure and Logic Lab</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Computer System Security/Python Programming</item>
+    </string-array>
+
+    <string-array name="CS_subjects_4_sem">
+        <item>Maths IV/Engg. Science Course</item>
+        <item>Universal Human Values/ Technical Communication</item>
+        <item>Operating Systems</item>
+        <item>Theory of Automata and Formal Languages</item>
+        <item>Microprocessor</item>
+        <item>Operating Systems Lab</item>
+        <item>Microprocessor Lab</item>
+        <item>Python Language Programming Lab</item>
+        <item>Python Programming/Computer System Security</item>
+    </string-array>
+
+    <string-array name="CS_subjects_5_sem">
+        <item>Database Management System</item>
+        <item>Compiler Design</item>
+        <item>Design and Analysis of Algorithm</item>
+        <item>Deptt. Elective-I</item>
+        <item>Departmental Elective-I</item>
+        <item>Deptt. Elective-II</item>
+        <item>Departmental Elective-II</item>
+        <item>Database Management System Lab</item>
+        <item>Compiler Design Lab</item>
+        <item>Design and Analysis of Algorithm Lab</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Constitution of India, Law and Engineering / Indian Tradition, Culture and Society</item>
+    </string-array>
+
+    <string-array name="CS_subjects_6_sem">
+        <item>Software Engineering</item>
+        <item>Web Technology</item>
+        <item>Computer Networks</item>
+        <item>Deptt. Elective-III</item>
+        <item>Departmental Elective-III</item>
+        <item>Open Elective-I [Annexure - B(iv)]</item>
+        <item>Software Engineering Lab</item>
+        <item>Web Technology Lab</item>
+        <item>Computer Networks Lab</item>
+        <item>Constitution of India, Law and Engineering / Indian Tradition, Culture and Society</item>
+    </string-array>
+
+    <string-array name="Electrical_subjects_1_sem">
+        <item>Subject</item>
+        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Mathematics-I</item>
+        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving / English Language Lab</item>
+        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
+        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Soft Skill I</item>
+    </string-array>
+
+    <string-array name="Electrical_subjects_2_sem">
+        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Mathematics-II</item>
+        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving / English Language Lab</item>
+        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
+        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Soft Skill II</item>
+    </string-array>
+    <string-array name="Electrical_subjects_3_sem">
+        <item>Engg. Science Course/Maths IV</item>
+        <item>Technical Communication/Universal Human values</item>
+        <item>Electromagnetic Field Theory</item>
+        <item>Electrical Measurements and Instrumentation</item>
+        <item>Basic Signals and Systems</item>
+        <item>Analog Electronics Lab</item>
+        <item>Electrical Measurements and Instrumentation Lab</item>
+        <item>Electrical Workshop</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Computer System Security/Python Programming</item>
+    </string-array>
+
+    <string-array name="Electrical_subjects_4_sem">
+        <item>Maths IV/Engg. Science Course</item>
+        <item>Universal Human Values/Technical Communication</item>
+        <item>Digital Electronics</item>
+        <item>Electrical Machines-I</item>
+        <item>Networks Analysis and Synthesis</item>
+        <item>Circuit Simulation Lab</item>
+        <item>Electrical Machines - I Lab</item>
+        <item>Digital Electronics Lab</item>
+        <item>Python Programming/Computer System Security</item>
+    </string-array>
+    <string-array name="Electrical_subjects_7_sem">
+        <item>HSMC -1 #/ HSMC-2 #</item>
+        <item>Departmental Elective-IV</item>
+        <item>Departmental Elective-V</item>
+        <item>Open Elective-II</item>
+        <item>Industrial Automation and PLC Lab</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Project</item>
+    </string-array>
+
+    <string-array name="Electrical_subjects_8_sem">
+        <item>HSMC-2#/HSMC-1#</item>
+        <item>Open Elective-III</item>
+        <item>Open Elective-IV</item>
+        <item>Projects</item>
+    </string-array>
+
+    <string-array name="IT_subjects_1_sem">
+        <item>Subject</item>
+        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Mathematics-I</item>
+        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving English Language Lab</item>
+        <item>Engineering Graphics and Design L Mechanical Workshop Lab</item>
+        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Soft Skill I</item>
+    </string-array>
+
+    <string-array name="IT_subjects_2_sem">
+        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Mathematics-II</item>
+        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving / English Language Lab</item>
+        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
+        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Soft Skill I</item>
+    </string-array>
+
+    <string-array name="IT_subjects_3_sem">
+        <item>Engineering Science Course/Maths-IV</item>
+        <item>Technical Communication/Universal Human Values</item>
+        <item>Data Structure</item>
+        <item>Computer Organization and Architecture</item>
+        <item>Discrete Structures and Theory of Logic</item>
+        <item>Data Structures Using C Lab</item>
+        <item>Computer Organization Lab</item>
+        <item>Discrete Structure and Logic Lab</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Computer System Security/Python Programming</item>
+    </string-array>
+
+    <string-array name="IT_subjects_4_sem">
+        <item>Maths IV/Engg. Science Course</item>
+        <item>Universal Human Values/Technical Communication</item>
+        <item>Operating Systems</item>
+        <item>Theory of Automata and Formal Languages</item>
+        <item>Web Designing</item>
+        <item>Operating Systems Lab</item>
+        <item>Web Designing Lab</item>
+        <item>Python Language Programming Lab</item>
+        <item>Python Programming/ Computer System Security</item>
+    </string-array>
+
+    <string-array name="IT_subjects_5_sem">
+        <item>Database Management System</item>
+        <item>Web Technology</item>
+        <item>Design and Analysis of Algorithm</item>
+        <item>Deptt- Elective-I</item>
+        <item>Departmental Elective-I</item>
+        <item>Deptt.- Elective-II</item>
+        <item>Departmental Elective-II</item>
+        <item>Database Management System Lab</item>
+        <item>Web Technology Lab</item>
+        <item>Design and Analysis of Algorithm Lab</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Constitution of India, Law and Engineering/ Indian Tradition, Culture and Society</item>
+    </string-array>
+
+    <string-array name="IT_subjects_6_sem">
+        <item>Software Engineering</item>
+        <item>Data Analytics</item>
+        <item>Computer Networks</item>
+        <item>Deptt- Elective-III</item>
+        <item>Departmental Elective-III</item>
+        <item>Open Elective-I</item>
+        <item>Software Engineering Lab</item>
+        <item>Data Analytics Lab</item>
+        <item>Computer Networks Lab</item>
+        <item>Constitution of India, Law and Engineering / Indian Tradition, Culture and Society</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_1_sem">
+        <item>Subject</item>
+        <item>Mathematics-I</item>
+        <item>Engg. Physics-I</item>
+        <item>Engg. Chemistry/ Eng. Mechanics</item>
+        <item>Electrical Engg./ Computer Concepts and Programming in C</item>
+        <item>Electronics Engineering /Professional Communication</item>
+        <item>Manufacturing Processes/ Environment Ecology and</item>
+        <item>Engg. Chemistry Lab/ Engg. Lab Mechanics</item>
+        <item>Electrical Engg. Lab/ Computer Programming Lab</item>
+        <item>Workshop Practice/ Computer Engg. Graphics Aided</item>
+        <item>Physics Lab/ Professional Communication Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_2_sem">
+        <item>Mathematics-II</item>
+        <item>Engg. Physics-II</item>
+        <item>Engg. Chemistry/ Eng. Mechanics</item>
+        <item>Electrical Engg./ Computer Concepts and Programming in C</item>
+        <item>Electronics Engineering /Professional Communication</item>
+        <item>Manufacturing Processes/ Environment Ecology and</item>
+        <item>Engg. Chemistry Lab/ Engg. Lab Mechanics</item>
+        <item>Electrical Engg. Lab/ Computer Programming Lab</item>
+        <item>Workshop Practice/ Computer Aided Engg. Graphics</item>
+        <item>Physics Lab/ Professional Communication Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_3_sem">
+        <item>Mathematics III</item>
+        <item>Production process</item>
+        <item>Strength of Materials</item>
+        <item>Materials Science and Engineering</item>
+        <item>Fluid Mechanics</item>
+        <item>Thermodynamics</item>
+        <item>Human Values and Professional</item>
+        <item>Material Science and Testing Lab</item>
+        <item>Thermodynamics Lab</item>
+        <item>Machine Drawing I Lab</item>
+        <item>Fluid Mechanics Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_4_sem">
+        <item>Electrical Machines and Automatic Control</item>
+        <item>Theory of Machines - I</item>
+        <item>Applied Thermodynamics</item>
+        <item>Measurement and Metrology</item>
+        <item>Manufacturing Science - I</item>
+        <item>Advanced Materials</item>
+        <item>Manufacturing Science - I Lab</item>
+        <item>Machine Drawing - II Lab</item>
+        <item>Measurement and Metrology Lab</item>
+        <item>Electrical Machines and Automatic Control Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_5_sem">
+        <item>Engineering and Managerial Economics</item>
+        <item>Machine Design-I</item>
+        <item>Manufacturing Science-II</item>
+        <item>Heat and Mass Transfer</item>
+        <item>Theory of Machines-II</item>
+        <item>I.C. Engines and Compressors</item>
+        <item>Manufacturing Science-II Lab</item>
+        <item>Heat and Mass Transfer Lab</item>
+        <item>Machine Design-I Lab</item>
+        <item>Theory of Machines Lab</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_6_sem">
+        <item>Industrial Management</item>
+        <item>Computer Aided Manufacturing</item>
+        <item>Refrigeration and Air Conditioning</item>
+        <item>Machine Design - II</item>
+        <item>Fluid Machinery</item>
+        <item>Production and Operation Management</item>
+        <item>Refrigeration and Air Conditioning Lab</item>
+        <item>Machine Design - II Lab</item>
+        <item>Fluid Machinery Lab</item>
+        <item>Seminar</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_7_sem">
+        <item>Mechanical Vibration</item>
+        <item>CAD</item>
+        <item>Automobile Engineering</item>
+        <item>Operation Research</item>
+        <item>Departmental Elective-I</item>
+        <item>Departmental Elective-II</item>
+        <item>Departmental Elective-III</item>
+        <item>Departmental Elective-IV</item>
+        <item>Departmental Elective-V</item>
+        <item>CAD/CAM Lab</item>
+        <item>IC Engine and Automobile Lab</item>
+        <item>Industrial Training Viva</item>
+        <item>Project</item>
+        <item>General Proficiency</item>
+    </string-array>
+
+    <string-array name="Mechanical_subjects_8_sem">
+        <item>Power Plant Engineering</item>
+        <item>Non-Conventional Energy Resources</item>
+        <item>Departmental Elective-II</item>
+        <item>Departmental Elective-III</item>
+        <item>Departmental Elective-IV</item>
+        <item>Departmental Elective-V</item>
+        <item>Departmental Elective-VI</item>
+        <item>Departmental Elective-VII</item>
+        <item>Departmental Elective-VIII</item>
+        <item>Departmental Elective-IX</item>
+        <item>Project</item>
+        <item>General Proficiency</item>
+    </string-array>
+
 </resources>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="20dp"
     tools:context=".MainActivity">
 
@@ -54,9 +55,9 @@
             android:id="@+id/reg_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:hint="Knit email address">
+            android:hint="Knit email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -64,157 +65,21 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Select Courses:" />
+     <androidx.appcompat.widget.AppCompatButton
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="20dp"
+         android:id="@+id/selecCourseBtn"
+         android:text="Select Courses"
+         android:background="#BCA52E"
+         android:textColor="#fff"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/MCA_CheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="MCA" />
-
-        <Spinner
-            android:id="@+id/MCA_sem"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:gravity="right"
-            android:spinnerMode="dropdown" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <CheckBox
-                android:id="@+id/Civil_CheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="Civil" />
-
-            <Spinner
-                android:id="@+id/Civil_sem"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:spinnerMode="dropdown" />
-        </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <CheckBox
-                        android:id="@+id/Computer_Science_CheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="Computer Science" />
-
-                    <Spinner
-                        android:id="@+id/Computer_Science_sem"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:spinnerMode="dropdown" />
-                </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <CheckBox
-                android:id="@+id/Electrical_CheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="Electrical" />
-
-            <Spinner
-                android:id="@+id/Electrical_sem"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:spinnerMode="dropdown" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <CheckBox
-                android:id="@+id/Electronics_CheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="Electronics" />
-
-            <Spinner
-                android:id="@+id/Electronics_sem"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:spinnerMode="dropdown" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <CheckBox
-                android:id="@+id/IT_CheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="IT" />
-            <Spinner
-                android:id="@+id/IT_sem"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:spinnerMode="dropdown" />
-        </RelativeLayout>
-
-                <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <CheckBox
-                android:id="@+id/Mechanical_CheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="Mechanical" />
-            <Spinner
-                android:id="@+id/Mechanical_sem"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:spinnerMode="dropdown" />
-        </RelativeLayout>
-            </LinearLayout>
-        </ScrollView>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/reg_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:hint="Password"
             android:transitionName="password_tran"
             app:passwordToggleEnabled="true">
@@ -231,7 +96,7 @@
             android:id="@+id/confm_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
             android:hint="Re-enter Password"
             android:transitionName="password_tran"
