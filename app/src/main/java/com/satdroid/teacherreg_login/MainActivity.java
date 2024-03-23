@@ -7,13 +7,17 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +27,8 @@ private    String MCA_tv,Civil_tv;
     private  Spinner MCAsub,civilsub,cssub,electricalsub,electronicssub,ITsub,mechanicalsub;
     private  CheckBox MCAcb,civilcb,cscb,electricalcb,electronicscb,ITcb,mechanicalcb;
   private  AppCompatButton selectCourseBtn;
+  private TextInputLayout Fname,email_reg, pass,cnf_pass;
+  private TextView selected_course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,7 @@ private    String MCA_tv,Civil_tv;
 
         selectCourseBtn=findViewById(R.id.selecCourseBtn);
         btnregister=findViewById(R.id.reg_btn);
-
+        selected_course=findViewById(R.id.course_status);
         selectCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +67,8 @@ private    String MCA_tv,Civil_tv;
                             Civil_tv=civilcb.getText().toString()+" "+civil.getSelectedItem().toString();
                         }
 
-                        Toast.makeText(MainActivity.this,MCA_tv,Toast.LENGTH_SHORT).show();
+                        selected_course.setText("Course Selected");
+
                     }
                 });
                 alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -76,10 +83,14 @@ private    String MCA_tv,Civil_tv;
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent RegToDash=new Intent(MainActivity.this,TeacherDashboard.class);
-                RegToDash.putExtra("MCA",MCA_tv);
-                RegToDash.putExtra("Civil",Civil_tv);
-                startActivity(RegToDash);
+
+                TextInputInit();
+                if(CheckField()) {
+                    Intent RegToDash = new Intent(MainActivity.this, TeacherDashboard.class);
+                    RegToDash.putExtra("MCA", MCA_tv);
+                    RegToDash.putExtra("Civil", Civil_tv);
+                    startActivity(RegToDash);
+                }
             }
         });
 
@@ -233,5 +244,97 @@ private    String MCA_tv,Civil_tv;
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void TextInputInit()
+    {
+        Fname=findViewById(R.id.reg_name);
+        email_reg=findViewById(R.id.reg_email);
+        pass=findViewById(R.id.reg_password);
+        cnf_pass=findViewById(R.id.confm_password);
+    }
+
+    private boolean CheckField()
+    {
+        Fname.setErrorEnabled(false);
+        Fname.setError("");
+        email_reg.setErrorEnabled(false);
+        email_reg.setError("");
+        pass.setErrorEnabled(false);
+        pass.setError("");
+        cnf_pass.setErrorEnabled(false);
+        cnf_pass.setError("");
+
+        String emailPattern="[a-zA-Z0-9._-]+@knit+\\.+ac+.+in+";
+
+        boolean isValidFname=false,isValidemail_reg=false,isValidlpass=false,isValidcnf_pass=false,isValidcourse_reg=false;
+
+        if(TextUtils.isEmpty(Fname.getEditText().getText().toString().trim()))
+        {
+            Fname.setErrorEnabled(true);
+            Fname.setError("Enter Full Name");
+        }
+        else
+        {
+            isValidFname=true;
+        }
+
+        if(TextUtils.isEmpty(email_reg.getEditText().getText().toString().trim()))
+        {
+            email_reg.setErrorEnabled(true);
+            email_reg.setError("Email is required");
+        }
+        else
+        {
+            if(email_reg.getEditText().getText().toString().trim().matches(emailPattern)) {
+                isValidemail_reg = true;
+            }
+
+            else
+            {
+                email_reg.setErrorEnabled(true);
+                email_reg.setError("Enter KNIT email");
+            }
+        }
+
+        if(TextUtils.isEmpty(pass.getEditText().getText().toString().trim()))
+        {
+            pass.setErrorEnabled(true);
+            pass.setError("Enter Last Name");
+        }
+        else
+        {
+            isValidlpass=true;
+        }
+
+        if(TextUtils.isEmpty(cnf_pass.getEditText().getText().toString().trim()))
+        {
+            cnf_pass.setErrorEnabled(true);
+            cnf_pass.setError("Enter password again");
+        }
+        else
+        {
+            if(!pass.getEditText().getText().toString().trim().equals(cnf_pass.getEditText().getText().toString().trim()))
+            {
+                cnf_pass.setErrorEnabled(true);
+                cnf_pass.setError("Password didn't match");
+            }
+            else
+            {isValidcnf_pass=true;}
+        }
+
+        if(!selected_course.getText().equals("Course Selected"))
+        {
+            Toast.makeText(MainActivity.this,"Select the courses",Toast.LENGTH_SHORT).show();
+            isValidcourse_reg=false;
+        }
+        else
+        {
+            isValidcourse_reg=true;
+        }
+        boolean isvalid=false;
+         isvalid=(isValidlpass&&isValidemail_reg&&isValidFname&&isValidcnf_pass&&isValidcourse_reg) ?true:false;
+        return isvalid;
+
     }
 }
