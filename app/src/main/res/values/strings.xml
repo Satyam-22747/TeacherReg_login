@@ -13,6 +13,14 @@
         <item>8</item>
     </string-array>
 
+        <string-array name="Semester_MCA_Mtech">
+        <item>Sem</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <string-array name="Mca_subjects_1_sem">
         <item>Subject</item>
         <item>Fundamental of Computers and Emerging Technologies</item>

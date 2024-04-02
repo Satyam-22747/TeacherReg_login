@@ -8,13 +8,27 @@
     android:orientation="vertical"
     tools:context=".AddImage">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="650dp"/>
+    <ImageSwitcher
+        android:id="@+id/image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/floating_btn_newCourse"
+        android:id="@+id/ftbtn_image"
         android:layout_gravity="center"
+        android:layout_marginTop="200dp"
         android:foreground="@drawable/add_course_img" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/upload_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#BCA52E"
+        android:text="Upload"
+        android:textColor="#fff"
+        android:transitionName="button_tran" />
+
 </LinearLayout>

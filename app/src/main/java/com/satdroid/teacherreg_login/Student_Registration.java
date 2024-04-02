@@ -128,8 +128,6 @@ public class Student_Registration extends AppCompatActivity {
     {
         RdGroup=alertLayout.findViewById(R.id.Rad_group);
         RdGroup.clearCheck();
-
-
     }
     private void SemesterSpinnerView(View alertLayout)
     {

@@ -1,5 +1,6 @@
 package com.satdroid.teacherreg_login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +17,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TeacherDashboard extends AppCompatActivity {
 
@@ -34,8 +42,9 @@ public class TeacherDashboard extends AppCompatActivity {
     private  Spinner MCA,civil,cs,electrical,electronics,IT,mechanical;
 
     ArrayList<CourseModal> courseList=new ArrayList<>();
-
-
+    HashMap<String,String> CourseUpload;
+    private FirebaseAuth FAuth;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +55,18 @@ public class TeacherDashboard extends AppCompatActivity {
         courseName=findViewById(R.id.CourseTV);
         floatingActionButton=findViewById(R.id.floating_btn_newCourse);
 
-        Intent intent=getIntent();
-        MCAtxt=intent.getStringExtra("MCA");
-       Civiltxt=intent.getStringExtra("Civil");
+        FAuth= FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        CourseUpload=new HashMap<>();
 
+        Intent intent=getIntent();
+        ArrayList<ArrayList<String>> coursesList;
+        coursesList=(ArrayList<ArrayList<String>>)intent.getSerializableExtra("Courses List");
         courseName.setText("Courses");
-        if(MCAtxt!=null)
+
+        for(int i=0;i<coursesList.size();i++)
         {
-            courseList.add(new CourseModal(MCAtxt));
-        }
-        if(Civiltxt!=null)
-        {
-            courseList.add(new CourseModal(Civiltxt));
+            courseList.add(new CourseModal((coursesList.get(i)).get(0)+" "+(coursesList.get(i)).get(1)));
         }
 
         CourseAdapter adapter=new CourseAdapter(this,courseList);
@@ -66,7 +75,6 @@ public class TeacherDashboard extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LayoutInflater inflater = getLayoutInflater();
                 View alertLayout=inflater.inflate(R.layout.new_course_add_design_teacher,null);
                 //checkbox
@@ -85,36 +93,42 @@ public class TeacherDashboard extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         if(MCAcb.isChecked())
                         {
-                            MCA_tv=MCAcb.getText().toString()+" "+MCA.getSelectedItem().toString();
-                            courseList.add(new CourseModal(MCA_tv));
-
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(MCAcb.getText().toString());
+                            checked.add(MCA.getSelectedItem().toString());
+                            checked.add(MCAsub.getSelectedItem().toString());
+                            coursesList.add(checked);
+                            courseList.add(new CourseModal(checked.get(0)+ " "+checked.get(1)));
                         }
+
                         if(civilcb.isChecked())
                         {
-                            Civil_tv=civilcb.getText().toString()+" "+civil.getSelectedItem().toString();
-                            courseList.add(new CourseModal(Civil_tv));
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(civilcb.getText().toString());
+                            checked.add(civil.getSelectedItem().toString());
+                            checked.add(civilsub.getSelectedItem().toString());
+                            coursesList.add(checked);
+                            courseList.add(new CourseModal(checked.get(0)+ " "+checked.get(1)));
                         }
                         gridViewCourse.setAdapter(adapter);
-
                         Toast.makeText(TeacherDashboard.this,"Course selected",Toast.LENGTH_SHORT).show();
                     }
                 });
                 alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 });
                 AlertDialog alertDialog1=alertDialog.create();
                 alertDialog1.show();
-
             }
         });
         gridViewCourse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent inext=new Intent(TeacherDashboard.this,CourseActivity.class);
-                inext.putExtra("course_name",courseList.get(position).getCourse());
+//                inext.putExtra("course_clicked",courseList.get(position).getCourse());
+                inext.putExtra("course_clicked",coursesList.get(position));
                 startActivity(inext);
             }
         });

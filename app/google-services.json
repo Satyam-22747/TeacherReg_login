@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "320360691726",
+    "project_id": "collegeproject-83e99",
+    "storage_bucket": "collegeproject-83e99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320360691726:android:1333865278de70cf56645f",
+        "android_client_info": {
+          "package_name": "com.satdroid.teacherreg_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-xZlckNRf2-q7eUaAMS65AT9Hp5wc9WM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
