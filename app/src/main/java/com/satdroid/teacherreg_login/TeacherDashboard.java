@@ -31,9 +31,9 @@ import java.util.HashMap;
 public class TeacherDashboard extends AppCompatActivity {
 
 
-    private String MCAtxt,Civiltxt;
+    //private String MCAtxt,Civiltxt;
    private GridView gridViewCourse;
-    private    String MCA_tv,Civil_tv;
+  //  private    String MCA_tv,Civil_tv;
    private TextView courseName;
   private  FloatingActionButton floatingActionButton;
   private  CheckBox MCAcb,civilcb,cscb,electricalcb,electronicscb,ITcb,mechanicalcb;
@@ -127,7 +127,7 @@ public class TeacherDashboard extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent inext=new Intent(TeacherDashboard.this,CourseActivity.class);
-//                inext.putExtra("course_clicked",courseList.get(position).getCourse());
+                inext.putExtra("course_clicked",courseList.get(position).getCourse());
                 inext.putExtra("course_clicked",coursesList.get(position));
                 startActivity(inext);
             }
@@ -153,9 +153,11 @@ public class TeacherDashboard extends AppCompatActivity {
         electronics=alertLayout.findViewById(R.id.Electronics_sem);
         IT=alertLayout.findViewById(R.id.IT_sem);
         mechanical=alertLayout.findViewById(R.id.Mechanical_sem);
+
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(TeacherDashboard.this, R.array.Semester, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         MCA.setAdapter(adapter);
+
         civil.setAdapter(adapter);
         cs.setAdapter(adapter);
         electrical.setAdapter(adapter);

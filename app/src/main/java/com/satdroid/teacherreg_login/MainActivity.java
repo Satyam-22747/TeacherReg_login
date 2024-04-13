@@ -49,7 +49,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
   private TextView selected_course;
 
     private FirebaseAnalytics mFirebaseAnalytics;
-    private FirebaseAuth FAuth;
+    private FirebaseAuth FAuth; //firebase authentication
    private  FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
@@ -63,8 +63,11 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
         selectCourseBtn=findViewById(R.id.selecCourseBtn);
         btnregister=findViewById(R.id.reg_btn);
         selected_course=findViewById(R.id.course_status);
+
         databaseReference=firebaseDatabase.getInstance().getReference("Teacher");
+
         FAuth= FirebaseAuth.getInstance();
+
         db = FirebaseFirestore.getInstance();
         selectCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +125,9 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
             public void onClick(View v) {
 
                 TextInputInit();
+
                 if(CheckField()) {
+
                     FAuth.createUserWithEmailAndPassword(email_reg.getEditText().getText().toString().trim(),pass.getEditText().getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -130,7 +135,8 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                             {
                                 Toast.makeText(MainActivity.this, "Registered", Toast.LENGTH_SHORT).show();
                 DocumentReference dbTeachers=db.collection("Teacher").document(FAuth.getCurrentUser().toString());
-                                HashMap<String,String> hashMap1=new HashMap<>();
+
+                HashMap<String,String> hashMap1=new HashMap<>();
                                 for(int i=0;i<Courses.size();i++)
                                 {
                                     hashMap1.put("Course "+(i+1),(Courses.get(i)).get(0)+" Sem: "+(Courses.get(i)).get(1));

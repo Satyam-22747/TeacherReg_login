@@ -24,7 +24,6 @@ import com.google.android.material.textfield.TextInputLayout;
 public class Student_Registration extends AppCompatActivity {
 
     private AppCompatButton btnregister,selectCourseBtn;
-    private Spinner MCA,civil,cs,electrical,electronics,IT,mechanical;
     private RadioGroup RdGroup;
     private RadioButton Rdbtn,MCArd,civilrd,csrd,electricalrd,electronicsrd,ITrd,mechanicalrd;
     private TextInputLayout fullname,rollno,password,re_password,email_stud;
@@ -54,7 +53,7 @@ public class Student_Registration extends AppCompatActivity {
                 //radio group init
                 RadioGroupint(alertLayout);
                 //spinner view semester
-                SemesterSpinnerView(alertLayout);
+               // SemesterSpinnerView(alertLayout);
 
                 //Alert dialog
                 AlertDialog.Builder alertDialog=new AlertDialog.Builder(Student_Registration.this);
@@ -71,35 +70,35 @@ public class Student_Registration extends AppCompatActivity {
 
                             if(course_selected_text_rd.equals("MCA"))
                             {
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+MCA.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                             if(course_selected_text_rd.equals("Civil"))
                             {
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+civil.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                             if(course_selected_text_rd.equals("Computer Science"))
                             {
 //
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+cs.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                             if(course_selected_text_rd.equals("Electrical"))
                             {
 
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+electrical.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                             if(course_selected_text_rd.equals("Electronics"))
                             {
 
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+electronics.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                             if(course_selected_text_rd.equals("IT"))
                             {
 
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+IT.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                             if(course_selected_text_rd.equals("Mechanical"))
                             {
-                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd+" "+mechanical.getSelectedItem().toString()+" semester");
+                                selected_course_tv.setText("Course Selected: "+course_selected_text_rd);
                             }
                         }
                     }
@@ -129,24 +128,6 @@ public class Student_Registration extends AppCompatActivity {
         RdGroup=alertLayout.findViewById(R.id.Rad_group);
         RdGroup.clearCheck();
     }
-    private void SemesterSpinnerView(View alertLayout)
-    {
-        MCA=alertLayout.findViewById(R.id.MCA_sem_stud);
-        civil=alertLayout.findViewById(R.id.Civil_sem_stud);
-        cs=alertLayout.findViewById(R.id.Computer_Science_sem_stud);
-        electrical=alertLayout.findViewById(R.id.Electrical_sem_stud);
-        electronics=alertLayout.findViewById(R.id.Electronics_sem_stud);
-        IT=alertLayout.findViewById(R.id.IT_sem_stud);
-        mechanical=alertLayout.findViewById(R.id.Mechanical_sem_stud);
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(Student_Registration.this, R.array.Semester, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        MCA.setAdapter(adapter);
-        civil.setAdapter(adapter);
-        cs.setAdapter(adapter);
-        electrical.setAdapter(adapter);
-        electronics.setAdapter(adapter);
-        IT.setAdapter(adapter);
-        mechanical.setAdapter(adapter);
-    }
+
 
 }

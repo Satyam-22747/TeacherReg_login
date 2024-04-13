@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class CourseActivity extends AppCompatActivity {
 
-    TextView courseName;
-    CardView ebookcv, imagecv, pdfcv, studentcv, noticecv, assignmentcv;
+   private TextView courseName;
+  private    CardView ebookcv, imagecv, pdfcv, studentcv, noticecv, assignmentcv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

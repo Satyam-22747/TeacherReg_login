@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StudentDashboard">
+    tools:context=".Images_Student">
 
     <TextView
-        android:id="@+id/Course_TV_stud"
+        android:id="@+id/Sub_stud"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="Course Name"
+        android:text="Subjects"
         android:textColor="#BCA52E"
         android:textSize="30sp" />
 
     <GridView
-        android:id="@+id/gridView_sem_stud"
+        android:id="@+id/gridView_sub_stud"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginTop="20dp"

@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 public class CourseAdapter extends ArrayAdapter<CourseModal> {
 
-    public CourseAdapter(@NonNull Context context, ArrayList<CourseModal> courseModalArrayList) {
+    public CourseAdapter(@NonNull Context context, ArrayList<CourseModal> courseModalArrayList)
+    {
         super(context, 0, courseModalArrayList);
     }
 

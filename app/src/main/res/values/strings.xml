@@ -13,7 +13,7 @@
         <item>8</item>
     </string-array>
 
-        <string-array name="Semester_MCA_Mtech">
+    <string-array name="Semester_MCA_Mtech">
         <item>Sem</item>
         <item>1</item>
         <item>2</item>
