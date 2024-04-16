@@ -8,10 +8,10 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,7 +30,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class AddImage extends AppCompatActivity {
 
@@ -140,66 +138,79 @@ private ArrayList<String> course_selected;
             if (IndividualImage != null) {
                 StorageReference ImageFolder = FirebaseStorage.getInstance().getReference().child("ItemImages");
                 Toast.makeText(AddImage.this,"Inside firebase storage 2",Toast.LENGTH_SHORT).show();
-                final StorageReference ImageName = ImageFolder.child("Image" + i + ": " + IndividualImage.getLastPathSegment());
+                final StorageReference ImageName = ImageFolder.child("Image" + i + ": " + System.currentTimeMillis());
 
-                ImageName.putFile(IndividualImage);
-              //  ImageName.getDownloadUrl();
-                ImageUrl.put("Image "+i,String.valueOf(ImageName.getDownloadUrl()));
+                int finalI = i;
+                ImageName.putFile(IndividualImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Toast.makeText(AddImage.this," 3 Dwd Url obtained "+uri,Toast.LENGTH_SHORT).show();
+                                ImageUrlList(finalI, String.valueOf(uri));
+                            }
+                        });
+                    }
+                });
 
-//                ImageName.putFile(IndividualImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                        Toast.makeText(AddImage.this,"Image stored in database 3",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(AddImage.this,"Image not stored in database 3",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//                        ImageUrl.add(String.valueOf(uri));
-//                        Toast.makeText(AddImage.this,"Image dwd url in list 4",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(AddImage.this,"Image dwd url not list 4",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
         }
-        UploadImageFirestore(ImageUrl);
     }
 
      public void UploadImageFirestore(HashMap<String,String> dwdURls) {
       //   we need list that images urls
-         Toast.makeText(AddImage.this,"3 dwdURls Size: "+dwdURls.size(),Toast.LENGTH_SHORT).show();
-         if(!dwdURls.isEmpty())
+         Toast.makeText(AddImage.this,"4 dwdURls Size: "+dwdURls.size(),Toast.LENGTH_SHORT).show();
+         if(!dwdURls.isEmpty()&&dwdURls.size()==mArrayUri.size())
          {
-                    CollectionReference images_teacher = db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
-                            .document(course_selected.get(2)).collection("Images");
-                    images_teacher.add(dwdURls).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddImage.this, "Images url in firestore 4", Toast.LENGTH_SHORT).show();
+             CollectionReference images_teacher = db.collection("Images");
+//             HashMap<String,String> imageHash=new HashMap<>();
+//             imageHash.put("Image url",dwdURls);
+             dwdURls.put("Course Selected",course_selected.get(0));
+             dwdURls.put("Semester",course_selected.get(1));
+             dwdURls.put("Subject",course_selected.get(2));
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AddImage.this, "Images url not in firestore 4", Toast.LENGTH_SHORT).show();
+             images_teacher.add(dwdURls).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                 @Override
+                 public void onSuccess(DocumentReference documentReference) {
+                     Toast.makeText(AddImage.this, "Images url with info in firestore 5", Toast.LENGTH_SHORT).show();
+                 }
+             }).addOnFailureListener(new OnFailureListener() {
+                 @Override
+                 public void onFailure(@NonNull Exception e) {
+                     Toast.makeText(AddImage.this, "Images url with info not  in firestore 5", Toast.LENGTH_SHORT).show();
 
-                        }
-                    });
+                 }
+             });
+//                    CollectionReference images_teacher = db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
+//                            .document(course_selected.get(2)).collection("Images");
+//                    images_teacher.add(dwdURls).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                        @Override
+//                        public void onSuccess(DocumentReference documentReference) {
+//                            Toast.makeText(AddImage.this, "Images url in firestore 4", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Toast.makeText(AddImage.this, "Images url not in firestore 4", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
                 }
                     else {
-                        Toast.makeText(AddImage.this, "dwdURls is empty 4", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddImage.this, "dwdURls is empty 5", Toast.LENGTH_SHORT).show();
                     }
         }
+
+    void ImageUrlList(int i,String Urls)
+    {
+        ImageUrl.put("Image "+i,Urls);
+        if(i==mArrayUri.size());
+        UploadImageFirestore(ImageUrl);
+    }
+    {
+
+    }
     }
 

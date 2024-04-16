@@ -126,7 +126,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
 
                 TextInputInit();
 
-                if(CheckField()) {
+               // if(CheckField()) {
 
                     FAuth.createUserWithEmailAndPassword(email_reg.getEditText().getText().toString().trim(),pass.getEditText().getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -166,7 +166,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                             }
                         }
                     });
-                }
+            //    }
             }
         });
 
