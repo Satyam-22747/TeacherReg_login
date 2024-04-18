@@ -1,26 +1,48 @@
 package com.satdroid.teacherreg_login;
 
 public class ImageDataModal {
-    private String imageName,ImageUri;
+    String ImageUrl,CourseSelected,SemesterName,SubjectName;
 
-    public ImageDataModal(String imageName, String imageUri) {
-        this.imageName = imageName;
-        ImageUri = imageUri;
+    public String getImageUrl() {
+        return ImageUrl;
     }
 
-    public String getImageName() {
-        return imageName;
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public String getCourseSelected() {
+        return CourseSelected;
     }
 
-    public String getImageUri() {
-        return ImageUri;
+    public void setCourseSelected(String courseSelected) {
+        CourseSelected = courseSelected;
     }
 
-    public void setImageUri(String imageUri) {
-        ImageUri = imageUri;
+    public String getSemesterName() {
+        return SemesterName;
+    }
+
+    public void setSemesterName(String semesterName) {
+        SemesterName = semesterName;
+    }
+
+    public String getSubjectName() {
+        return SubjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        SubjectName = subjectName;
+    }
+
+    public ImageDataModal(String imageUrl, String courseSelected, String semesterName, String subjectName) {
+        ImageUrl = imageUrl;
+        CourseSelected = courseSelected;
+        SemesterName = semesterName;
+        SubjectName = subjectName;
+    }
+
+    public ImageDataModal() {
+
     }
 }
