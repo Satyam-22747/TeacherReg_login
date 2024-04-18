@@ -124,7 +124,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
             @Override
             public void onClick(View v) {
 
-                TextInputInit();
+
 
                // if(CheckField()) {
 
@@ -327,13 +327,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
         });
     }
 
-    private void TextInputInit()
-    {
-        Fname=findViewById(R.id.reg_name);
-        email_reg=findViewById(R.id.reg_email);
-        pass=findViewById(R.id.reg_password);
-        cnf_pass=findViewById(R.id.confm_password);
-    }
+
 
     private boolean CheckField()
     {
