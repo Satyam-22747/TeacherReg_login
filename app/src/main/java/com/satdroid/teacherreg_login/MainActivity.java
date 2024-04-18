@@ -60,9 +60,9 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        selectCourseBtn=findViewById(R.id.selecCourseBtn);
+       // selectCourseBtn=findViewById(R.id.selecCourseBtn);
         btnregister=findViewById(R.id.reg_btn);
-        selected_course=findViewById(R.id.course_status);
+        //selected_course=findViewById(R.id.course_status);
 
         databaseReference=firebaseDatabase.getInstance().getReference("Teacher");
 
