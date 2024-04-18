@@ -21,9 +21,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.core.operation.Merge;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -39,8 +41,8 @@ public class AddImage extends AppCompatActivity {
     ImageSwitcher imageView;
     int PICK_IMAGE_MULTIPLE = 1;
     ArrayList<Uri> mArrayUri;
-    HashMap<String,String> ImageUrl;
-
+//    HashMap<String,String> ImageUrl;
+ArrayList<String> ImageUrl;
     int position = 0;
     FirebaseAuth FAuth;
     FirebaseFirestore db;
@@ -60,7 +62,9 @@ private ArrayList<String> course_selected;
         mArrayUri = new ArrayList<Uri>();
         FAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        ImageUrl=new HashMap<>();
+       // ImageUrl=new HashMap<>();
+
+        ImageUrl=new ArrayList<>();
         Intent intent=getIntent();
         course_selected=(ArrayList<String>)intent.getSerializableExtra("Selected Course");
         imageView.setFactory(new ViewSwitcher.ViewFactory() {
@@ -158,46 +162,51 @@ private ArrayList<String> course_selected;
         }
     }
 
-     public void UploadImageFirestore(HashMap<String,String> dwdURls) {
+     public void UploadImageFirestore(ArrayList<String> dwdURls) {
       //   we need list that images urls
          Toast.makeText(AddImage.this,"4 dwdURls Size: "+dwdURls.size(),Toast.LENGTH_SHORT).show();
-         if(!dwdURls.isEmpty()&&dwdURls.size()==mArrayUri.size())
-         {
-             CollectionReference images_teacher = db.collection("Images");
-//             HashMap<String,String> imageHash=new HashMap<>();
-//             imageHash.put("Image url",dwdURls);
-             dwdURls.put("Course Selected",course_selected.get(0));
-             dwdURls.put("Semester",course_selected.get(1));
-             dwdURls.put("Subject",course_selected.get(2));
+         if(!dwdURls.isEmpty()&&dwdURls.size()==mArrayUri.size()) {
 
-             images_teacher.add(dwdURls).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                 @Override
-                 public void onSuccess(DocumentReference documentReference) {
-                     Toast.makeText(AddImage.this, "Images url with info in firestore 5", Toast.LENGTH_SHORT).show();
-                 }
-             }).addOnFailureListener(new OnFailureListener() {
-                 @Override
-                 public void onFailure(@NonNull Exception e) {
-                     Toast.makeText(AddImage.this, "Images url with info not  in firestore 5", Toast.LENGTH_SHORT).show();
+             CollectionReference images_teacher = db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
+                     .document(course_selected.get(2)).collection("Images");
+             HashMap<String, String> imageHash = new HashMap<>();
 
-                 }
-             });
+             for (int i = 0; i < dwdURls.size(); i++) {
+                 imageHash.put("ImageUrl", dwdURls.get(i));
+
+                 imageHash.put("CourseSelected", course_selected.get(0));
+                 imageHash.put("semesterName", course_selected.get(1));
+                 imageHash.put("subjectName", course_selected.get(2));
+
+//                 images_teacher.set(imageHash, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                     @Override
+//                     public void onSuccess(Void unused) {
+//                         Toast.makeText(AddImage.this, "Images url in firestore 4", Toast.LENGTH_SHORT).show();
+//
+//                     }
+//                 }).addOnFailureListener(new OnFailureListener() {
+//                     @Override
+//                     public void onFailure(@NonNull Exception e) {
+//                         Toast.makeText(AddImage.this, "Images url not in firestore 4", Toast.LENGTH_SHORT).show();
+//                     }
+//                 });
 //                    CollectionReference images_teacher = db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
 //                            .document(course_selected.get(2)).collection("Images");
-//                    images_teacher.add(dwdURls).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                        @Override
-//                        public void onSuccess(DocumentReference documentReference) {
-//                            Toast.makeText(AddImage.this, "Images url in firestore 4", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Toast.makeText(AddImage.this, "Images url not in firestore 4", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    });
-                }
+                    images_teacher.add(imageHash).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(AddImage.this, "Images url in firestore 4", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddImage.this, "Images url not in firestore 4", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });}
+             }
+
                     else {
                         Toast.makeText(AddImage.this, "dwdURls is empty 5", Toast.LENGTH_SHORT).show();
                     }
@@ -205,12 +214,15 @@ private ArrayList<String> course_selected;
 
     void ImageUrlList(int i,String Urls)
     {
-        ImageUrl.put("Image "+i,Urls);
-        if(i==mArrayUri.size());
-        UploadImageFirestore(ImageUrl);
+//        HashMap<String,String> ImageUrl;
+//        ArrayList<String> ImageUrl;
+//        ImageUrl=new ArrayList<>();
+        ImageUrl.add(Urls);
+        if(ImageUrl.size()==mArrayUri.size()) {
+            Toast.makeText(AddImage.this, "Length of list: " + ImageUrl.size(), Toast.LENGTH_SHORT).show();
+            UploadImageFirestore(ImageUrl);
+        }
     }
-    {
 
-    }
     }
 

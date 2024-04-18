@@ -49,9 +49,8 @@ public class Images_Student extends AppCompatActivity {
                     TextView SubjectTv = (TextView) viewItem.findViewById(R.id.courseName_tv);
                     subjectname=subjectname+SubjectTv.getText().toString();
                 }
-//                String subjectname=gridViewSubjects.getItemAtPosition(position).toString();
-
                 Intent iSem=new Intent(Images_Student.this,ImageList.class);
+
                 iSem.putExtra("Course_Name",courseName_txt);
                 iSem.putExtra("Course_sem",courseSemester);
                 iSem.putExtra("Course_subjects",subjectname);
@@ -129,28 +128,28 @@ public class Images_Student extends AppCompatActivity {
                     Sub_List.add(new CourseModal(res.getStringArray(R.array.Civil_subjects_4_sem)[i]));
                 }
             }
-            if(course_sem==4)
+            if(course_sem==5)
             {
                 for(int i=1;i<res.getStringArray(R.array.Civil_subjects_5_sem).length;i++)
                 {
                     Sub_List.add(new CourseModal(res.getStringArray(R.array.Civil_subjects_5_sem)[i]));
                 }
             }
-            if(course_sem==4)
+            if(course_sem==6)
             {
                 for(int i=1;i<res.getStringArray(R.array.Civil_subjects_6_sem).length;i++)
                 {
                     Sub_List.add(new CourseModal(res.getStringArray(R.array.Civil_subjects_6_sem)[i]));
                 }
             }
-            if(course_sem==4)
+            if(course_sem==7)
             {
                 for(int i=1;i<res.getStringArray(R.array.Civil_subjects_7_sem).length;i++)
                 {
                     Sub_List.add(new CourseModal(res.getStringArray(R.array.Civil_subjects_7_sem)[i]));
                 }
             }
-            if(course_sem==4)
+            if(course_sem==8)
             {
                 for(int i=1;i<res.getStringArray(R.array.Civil_subjects_8_sem).length;i++)
                 {
