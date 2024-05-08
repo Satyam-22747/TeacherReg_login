@@ -46,14 +46,14 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
     private  CheckBox MCAcb,civilcb,cscb,electricalcb,electronicscb,ITcb,mechanicalcb;
   private  AppCompatButton selectCourseBtn;
   private TextInputLayout Fname,email_reg, pass,cnf_pass;
-  private TextView selected_course;
+  private TextView selected_course,t_name,t_email,t_department;
 
     private FirebaseAnalytics mFirebaseAnalytics;
     private FirebaseAuth FAuth; //firebase authentication
    private  FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,19 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
         selectCourseBtn=findViewById(R.id.selecCourseBtn);
         btnregister=findViewById(R.id.reg_btn);
         selected_course=findViewById(R.id.course_status);
+        t_name=findViewById(R.id.teacher_name);
+        t_email=findViewById(R.id.teacher_email);
+        t_department=findViewById(R.id.teacher_department);
+
+        Intent emailIntent=getIntent();
+        String T_name=emailIntent.getStringExtra("Name");
+        String T_department=emailIntent.getStringExtra("Department");
+        String T_email=emailIntent.getStringExtra("Email");
+
+        t_name.setText(T_name);
+        t_email.setText(T_email);
+        t_department.setText(T_department);
+
 
         databaseReference=firebaseDatabase.getInstance().getReference("Teacher");
 
@@ -101,9 +114,9 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                         if(civilcb.isChecked())
                         {
                             ArrayList<String> checked=new ArrayList<>();
-                            checked.add(civilcb.getText().toString());
-                            checked.add(civil.getSelectedItem().toString());
-                            checked.add(civilsub.getSelectedItem().toString());
+                            checked.add(civilcb.getText().toString()); //course name
+                            checked.add(civil.getSelectedItem().toString());  //course semester
+                            checked.add(civilsub.getSelectedItem().toString());  //course subject
                             Courses.add(checked);
                         }
 
@@ -128,28 +141,53 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
 
                // if(CheckField()) {
 
-                    FAuth.createUserWithEmailAndPassword(email_reg.getEditText().getText().toString().trim(),pass.getEditText().getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    FAuth.createUserWithEmailAndPassword(T_email,pass.getEditText().getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
                             {
                                 Toast.makeText(MainActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-                DocumentReference dbTeachers=db.collection("Teacher").document(FAuth.getCurrentUser().toString());
+                DocumentReference dbTeachers=db.collection("Teacher").document(FAuth.getCurrentUser().getUid());
 
                 HashMap<String,String> hashMap1=new HashMap<>();
-                                for(int i=0;i<Courses.size();i++)
-                                {
-                                    hashMap1.put("Course "+(i+1),(Courses.get(i)).get(0)+" Sem: "+(Courses.get(i)).get(1));
-                                }
-                                hashMap1.put("Name",Fname.getEditText().getText().toString().trim());
+//                                for(int i=0;i<Courses.size();i++)
+//                                {
+//                                    hashMap1.put("Course "+(i+1),(Courses.get(i)).get(0)+" Sem: "+(Courses.get(i)).get(1));
+//                                }
+                                hashMap1.put("Name",T_name);
                                 hashMap1.put("Password",pass.getEditText().getText().toString().trim());
-                                hashMap1.put("Email Id",email_reg.getEditText().getText().toString().trim());
+                                hashMap1.put("Email Id",T_email);
                                 dbTeachers.set(hashMap1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
+
+                                        CollectionReference courseCollection=db.collection("Teacher").document(FAuth.getCurrentUser().getUid())
+                                                        .collection("Selected course");
+
+                                        for(int i=0;i<Courses.size();i++)
+                                        {
+                                            HashMap<String,String> hashMap2=new HashMap<>();
+                                            hashMap2.put("CourseSelected",(Courses.get(i)).get(0));
+                                            hashMap2.put("Semester",Courses.get(i).get(1));
+                                            hashMap2.put("Subject",Courses.get(i).get(2));
+                                            courseCollection.add(hashMap2).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                @Override
+                                                public void onSuccess(DocumentReference documentReference) {
+                                                    Toast.makeText(MainActivity.this, "Course in firestore", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(MainActivity.this, "Course not in firestore", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            });
+                                        }
+
                                         Toast.makeText(MainActivity.this,"Account created",Toast.LENGTH_SHORT).show();
-                                        Intent RegToDash = new Intent(MainActivity.this, TeacherDashboard.class);
-                                        RegToDash.putExtra("Courses List", Courses);
+                                        Intent RegToDash = new Intent(MainActivity.this, TeacherLoginActivity.class);
+                                    //    RegToDash.putExtra("Courses List", Courses);
                                         startActivity(RegToDash);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
@@ -329,8 +367,8 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
 
     private void TextInputInit()
     {
-        Fname=findViewById(R.id.reg_name);
-        email_reg=findViewById(R.id.reg_email);
+//        Fname=findViewById(R.id.teacher_name);
+//        email_reg=findViewById(R.id.reg_email);
         pass=findViewById(R.id.reg_password);
         cnf_pass=findViewById(R.id.confm_password);
     }

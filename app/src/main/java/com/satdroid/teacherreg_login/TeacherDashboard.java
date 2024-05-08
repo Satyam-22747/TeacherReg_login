@@ -3,11 +3,13 @@ package com.satdroid.teacherreg_login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +27,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class TeacherDashboard extends AppCompatActivity {
@@ -41,6 +45,9 @@ public class TeacherDashboard extends AppCompatActivity {
 
     private  Spinner MCA,civil,cs,electrical,electronics,IT,mechanical;
 
+    private Toolbar toolbar;
+
+
     ArrayList<CourseModal> courseList=new ArrayList<>();
     HashMap<String,String> CourseUpload;
     private FirebaseAuth FAuth;
@@ -54,6 +61,7 @@ public class TeacherDashboard extends AppCompatActivity {
         gridViewCourse=findViewById(R.id.gridView_courses);
         courseName=findViewById(R.id.CourseTV);
         floatingActionButton=findViewById(R.id.floating_btn_newCourse);
+        toolbar=findViewById(R.id.toolbar);
 
         FAuth= FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -62,6 +70,7 @@ public class TeacherDashboard extends AppCompatActivity {
         Intent intent=getIntent();
         ArrayList<ArrayList<String>> coursesList;
         coursesList=(ArrayList<ArrayList<String>>)intent.getSerializableExtra("Courses List");
+
         courseName.setText("Courses");
 
         for(int i=0;i<coursesList.size();i++)
@@ -132,6 +141,24 @@ public class TeacherDashboard extends AppCompatActivity {
                 startActivity(inext);
             }
         });
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                int id=item.getItemId();
+                if(id==R.id.logout_btn) {
+
+                    Toast.makeText(TeacherDashboard.this,"Loged out",Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                    Intent inext=new Intent(TeacherDashboard.this, TeacherLoginActivity.class);
+                    startActivity(inext);
+                    finish();
+                }
+                return true;
+            }
+        });
+
     }
 
     private void CheckBoxint(View alertLayout)

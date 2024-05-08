@@ -510,4 +510,35 @@
         <item>General Proficiency</item>
     </string-array>
 
+    <string-array name="array_emails">
+        <item>pratyush@knit.ac.in</item>
+        <item>ramasheeshprajapati@gmail.com</item>
+        <item>shivamrck786@gmail.com</item>
+        <item>aasha@knit.ac.in</item>
+        <item>atulsha08@gmail.com</item>
+        <item>babu.ram@knit.ac.in</item>
+        <item>dhirendrak@knit.ac.in</item>
+        <item>garima.168204@knit.ac.in</item>
+        <item>hanumanmaurya@gmail.com</item>
+        <item>kriti@knit.ac.in</item>
+        <item>neetika@knit.ac.in</item>
+        <item>nilesh@knit.ac.in</item>
+        <item>sohit@knit.ac.in</item>
+        <item>vinay@knit.ac.in</item>
+        <item>abhinav.gautam@knit.ac.in</item>
+        <item>dilip.patel.2019@knit.ac.in</item>
+        <item>nitish.1710307@knit.ac.in</item>
+        <item>pnvknit@gmail.com</item>
+        <item>ravindrakumar@knit.ac.in</item>
+        <item>anuragknit.singh@gmail.com</item>
+        <item>vermagaurav1107@gmail.com</item>
+        <item>preeti.kharwar@gmail.com</item>
+        <item>shweta.singh.2176@knit.ac.in</item>
+        <item>vinaykumar@knit.ac.in</item>
+        <item>varun.sonkar@knit.ac.in</item>
+        <item>manib@knit.ac.in</item>
+        <item>Manish@knit.ac.in</item>
+        <item>praveen@knit.ac.in</item>
+    </string-array>
+
 </resources>

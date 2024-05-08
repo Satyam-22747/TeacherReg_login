@@ -1,9 +1,11 @@
 package com.satdroid.teacherreg_login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 public class StudentDashboard extends AppCompatActivity {
@@ -19,10 +23,10 @@ public class StudentDashboard extends AppCompatActivity {
     private TextView course_name_TV;
     private String courseName_txt;
     private GridView gridViewSemesters;
-    ArrayList<CourseModal> SemList=new ArrayList<>();
+    private ArrayList<CourseModal> SemList=new ArrayList<>();
+    private Toolbar toolbar;
 
-
-   // ArrayList<CourseModal> Sub_List=new ArrayList<>();
+    // ArrayList<CourseModal> Sub_List=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +34,24 @@ public class StudentDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_student_dashboard);
 
         course_name_TV=findViewById(R.id.Course_TV_stud);
+        toolbar=findViewById(R.id.toolbar);
 
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
 
+                int id=item.getItemId();
+                if(id==R.id.logout_btn) {
+
+                    Toast.makeText(StudentDashboard.this,"Loged out",Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                    Intent inext=new Intent(StudentDashboard.this, TeacherLoginActivity.class);
+                    startActivity(inext);
+                    finish();
+                }
+                return true;
+            }
+        });
         //gridview init
         gridViewSemesters=findViewById(R.id.gridView_sem_stud);
 

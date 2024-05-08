@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".TeacherDashboard">
 
+    <include layout="@layout/app_bar"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,12 +18,14 @@
         android:id="@+id/CourseTV"
         android:textSize="30sp"
         android:layout_marginTop="50dp"/>
-<GridView
-    android:layout_width="match_parent"
-    android:layout_height="500dp"
-    android:layout_marginTop="20dp"
-    android:id="@+id/gridView_courses"
-    android:numColumns="2"/>
+
+    <GridView
+        android:id="@+id/gridView_courses"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        android:numColumns="2"
+        android:padding="10dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="60dp"

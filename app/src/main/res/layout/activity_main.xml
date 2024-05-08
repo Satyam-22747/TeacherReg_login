@@ -38,32 +38,29 @@
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Full Name">
+            android:text="SignUp to start your new Journey"
+            android:textSize="18sp"
+            android:id="@+id/teacher_name"
+            android:transitionName="logo_desc"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Knit email">
+            android:id="@+id/teacher_email"
+            android:text="SignUp to start your new Journey"
+            android:textSize="18sp"
+            android:transitionName="logo_desc"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/teacher_department"
+            android:text="SignUp to start your new Journey"
+            android:textSize="18sp"
+            android:transitionName="logo_desc"/>
 
      <androidx.appcompat.widget.AppCompatButton
          android:layout_width="match_parent"

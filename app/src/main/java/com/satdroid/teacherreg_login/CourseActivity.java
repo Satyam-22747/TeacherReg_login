@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CourseActivity extends AppCompatActivity {
 
    private TextView courseName;
-  private    CardView ebookcv, imagecv, pdfcv, studentcv, noticecv, assignmentcv;
+  private    CardView  imagecv, pdfcv, studentcv, noticecv, assignmentcv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +21,8 @@ public class CourseActivity extends AppCompatActivity {
 
         courseName=findViewById(R.id.courseName);
 
-        ebookcv=findViewById(R.id.addEbook); imagecv=findViewById(R.id.addimage);pdfcv=findViewById(R.id.addPDF);
+        imagecv=findViewById(R.id.addimage);pdfcv=findViewById(R.id.addPDF);
         studentcv=findViewById(R.id.StudentDetails);noticecv=findViewById(R.id.addNotice);assignmentcv=findViewById(R.id.addassignments);
-
-//        Intent CourseIntent=getIntent();
-//        courseName.setText(CourseIntent.getStringExtra("course_name"));
 
         Intent intent=getIntent();
         ArrayList<String> course_selected;
@@ -44,6 +41,15 @@ public class CourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent  iPDF=new Intent(CourseActivity.this,AddPDF.class);
+                iPDF.putExtra("Selected Course",course_selected);
+                startActivity(iPDF);
+            }
+        });
+
+        studentcv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  iPDF=new Intent(CourseActivity.this,StudentDetails.class);
                 iPDF.putExtra("Selected Course",course_selected);
                 startActivity(iPDF);
             }
