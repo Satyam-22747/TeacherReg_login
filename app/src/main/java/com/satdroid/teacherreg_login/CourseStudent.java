@@ -27,7 +27,8 @@ private TextView Course_name,Course_sem;
        Course_sem.setText("Sem "+String.valueOf(course_sem));
 
         imagecv=findViewById(R.id.addimage_stud);
-
+        pdfcv=findViewById(R.id.PDF_stud);
+        noticecv=findViewById(R.id.Notice_stud);
         imagecv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +36,27 @@ private TextView Course_name,Course_sem;
                 iImage.putExtra("Course Name",course_name);
                 iImage.putExtra("Course Sem",course_sem);
                 startActivity(iImage);
+            }
+        });
+
+        pdfcv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iPDF=new Intent(CourseStudent.this,Pdf_student.class);
+                iPDF.putExtra("Course Name",course_name);
+                iPDF.putExtra("Course Sem",course_sem);
+                startActivity(iPDF);
+            }
+        });
+
+        noticecv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iNotice=new Intent(CourseStudent.this,Notice_student.class);
+                iNotice.putExtra("Course Name",course_name);
+                iNotice.putExtra("Course Sem",course_sem);
+                startActivity(iNotice);
+
             }
         });
     }

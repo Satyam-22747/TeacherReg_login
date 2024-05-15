@@ -8,45 +8,39 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class Images_Student extends AppCompatActivity {
+public class Pdf_student extends AppCompatActivity {
 
-
-    private GridView gridViewSubjects;
+    private GridView gridViewSubjects_pdf;
     private ArrayList<CourseModal> Sub_List=new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_images_student);
+        setContentView(R.layout.activity_pdf_student);
 
+        Intent iPDFStudent=getIntent();
+        String courseName_txt=iPDFStudent.getStringExtra("Course Name");
+        int courseSemester=iPDFStudent.getIntExtra("Course Sem",0);
+        gridViewSubjects_pdf=findViewById(R.id.gridView_sub_stud_pdf);
 
-        Intent iStudImage=getIntent();
-        String courseName_txt=iStudImage.getStringExtra("Course Name");
-        int courseSemester=iStudImage.getIntExtra("Course Sem",0);
-          gridViewSubjects=findViewById(R.id.gridView_sub_stud);
-
-        SubJectSemester(courseName_txt,courseSemester);
+        SubJectSemesterPDF(courseName_txt,courseSemester);
 
         CourseAdapter Subadapter=new CourseAdapter(this,Sub_List);
-        gridViewSubjects.setAdapter(Subadapter);
+        gridViewSubjects_pdf.setAdapter(Subadapter);
 
-        gridViewSubjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridViewSubjects_pdf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String subjectname="";
-                View viewItem = gridViewSubjects.getChildAt(position);
+                View viewItem = gridViewSubjects_pdf.getChildAt(position);
                 if (viewItem != null) {
                     TextView SubjectTv = (TextView) viewItem.findViewById(R.id.courseName_tv);
                     subjectname=subjectname+SubjectTv.getText().toString();
                 }
-                Intent iSem=new Intent(Images_Student.this,ImageList.class);
+                Intent iSem=new Intent(Pdf_student.this,PdfList_student.class);
 
                 iSem.putExtra("Course_Name",courseName_txt);
                 iSem.putExtra("Course_sem",courseSemester);
@@ -54,11 +48,9 @@ public class Images_Student extends AppCompatActivity {
                 startActivity(iSem);
             }
         });
-
-
     }
 
-    public void SubJectSemester(String course_name, int course_sem)
+    public void SubJectSemesterPDF(String course_name, int course_sem)
     {
         Resources res = getResources();
 

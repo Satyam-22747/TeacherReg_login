@@ -211,8 +211,7 @@ private ArrayList<String> course_selected;
     }
 
      public void UploadImageFirestore(ArrayList<String> dwdURls) {
-      //   we need list that images urls
-      //   Toast.makeText(AddImage.this,"4 dwdURls Size: "+dwdURls.size(),Toast.LENGTH_SHORT).show();
+
          if(!dwdURls.isEmpty()&&dwdURls.size()==mArrayUri.size()) {
 
              CollectionReference images_teacher = db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
@@ -231,7 +230,6 @@ private ArrayList<String> course_selected;
                         public void onSuccess(DocumentReference documentReference) {
                             imagePgbar.setVisibility(View.GONE);
                             linearLayout.setClickable(true);
-                            Toast.makeText(AddImage.this, "Image uploaded", Toast.LENGTH_SHORT).show();
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -239,16 +237,11 @@ private ArrayList<String> course_selected;
                         public void onFailure(@NonNull Exception e) {
                             imagePgbar.setVisibility(View.GONE);
                             linearLayout.setClickable(true);
-
                             Toast.makeText(AddImage.this, "Image not uploaded", Toast.LENGTH_SHORT).show();
 
                         }
                     });}
              }
-
-//                    else {
-//                        Toast.makeText(AddImage.this, "dwdURls is empty 5", Toast.LENGTH_SHORT).show();
-//                    }
         }
 
     void ImageUrlList(int i,String Urls)

@@ -60,8 +60,6 @@ public class AddPDF extends AppCompatActivity {
         setContentView(R.layout.activity_add_pdf);
 
         dbF=FirebaseFirestore.getInstance();
-//        pdfImage = findViewById(R.id.pdf);
-//        upd_btn_pdf = findViewById(R.id.upload_pdf);
         ft_sel_pdf = findViewById(R.id.ftbtn_pdf);
         mArrayUri = new ArrayList<Uri>();
         pdfUrl=new ArrayList<>();

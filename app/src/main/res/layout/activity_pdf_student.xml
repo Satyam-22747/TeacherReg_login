@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Images_Student">
+    tools:context=".Pdf_student">
 
     <TextView
         android:id="@+id/Sub_stud"
@@ -18,9 +17,10 @@
         android:textSize="30sp" />
 
     <GridView
-        android:id="@+id/gridView_sub_stud"
+        android:id="@+id/gridView_sub_stud_pdf"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginTop="20dp"
         android:numColumns="3" />
+
 </LinearLayout>

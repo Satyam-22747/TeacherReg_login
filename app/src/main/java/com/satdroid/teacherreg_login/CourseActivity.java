@@ -55,5 +55,14 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
 
+        noticecv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  iNOTICE=new Intent(CourseActivity.this,UploadNotice.class);
+                iNOTICE.putExtra("Selected Course",course_selected);
+                startActivity(iNOTICE);
+            }
+        });
+
     }
 }

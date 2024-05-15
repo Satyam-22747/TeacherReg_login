@@ -71,11 +71,11 @@ public class TakeAttendence extends AppCompatActivity implements AttendenceListe
             public void onClick(View v) {
                 attendencePGbar.setVisibility(View.VISIBLE);
                 if(studentAttendenceModalArrayList.isEmpty()) {
-                    Toast.makeText(TakeAttendence.this, "No attendence", Toast.LENGTH_SHORT).show();
-                    attendencePGbar.setVisibility(View.VISIBLE);
+                    Toast.makeText(TakeAttendence.this, "Empty attendence can not be saved", Toast.LENGTH_SHORT).show();
+                    attendencePGbar.setVisibility(View.GONE);
                 }
                 else {
-//                    attendencePGbar.setVisibility(View.VISIBLE);
+                    attendencePGbar.setVisibility(View.VISIBLE);
                     FAuth= FirebaseAuth.getInstance();
 
                     String today_date = new SimpleDateFormat("d-MM-yyyy", Locale.getDefault()).format(new Date());
@@ -90,18 +90,19 @@ public class TakeAttendence extends AppCompatActivity implements AttendenceListe
                         courseCollection.set(studentAttendenceModalArrayList.get(i)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-//                                Toast.makeText(TakeAttendence.this, "Attendence Saved",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TakeAttendence.this, "Attendence Saved",Toast.LENGTH_SHORT).show();
+                                attendencePGbar.setVisibility(View.GONE);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                attendencePGbar.setVisibility(View.GONE);
                                 Toast.makeText(TakeAttendence.this, "Attendence save failed",Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                     attendencePGbar.setVisibility(View.GONE);
-                    Toast.makeText(TakeAttendence.this, "Attendence Saved",Toast.LENGTH_SHORT).show();
-
+             //       Toast.makeText(TakeAttendence.this, "Attendence Saved",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -109,6 +110,7 @@ public class TakeAttendence extends AppCompatActivity implements AttendenceListe
 
     private void getStuddents()
     {
+        attendencePGbar.setVisibility(View.VISIBLE);
         dbSave.collection("Student")
                 .whereEqualTo("Course", course_selected.get(0)).orderBy("Name", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -125,6 +127,7 @@ public class TakeAttendence extends AppCompatActivity implements AttendenceListe
                             }
                         }
                         studentDetailsAdapter.notifyDataSetChanged();
+                        attendencePGbar.setVisibility(View.GONE);
                     }
                 });
     }

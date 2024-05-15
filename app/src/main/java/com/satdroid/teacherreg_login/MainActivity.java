@@ -45,7 +45,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
     private  Spinner MCAsub,civilsub,cssub,electricalsub,electronicssub,ITsub,mechanicalsub;
     private  CheckBox MCAcb,civilcb,cscb,electricalcb,electronicscb,ITcb,mechanicalcb;
   private  AppCompatButton selectCourseBtn;
-  private TextInputLayout Fname,email_reg, pass,cnf_pass;
+  private TextInputLayout pass,cnf_pass;
   private TextView selected_course,t_name,t_email,t_department;
 
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -375,10 +375,10 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
 
     private boolean CheckField()
     {
-        Fname.setErrorEnabled(false);
-        Fname.setError("");
-        email_reg.setErrorEnabled(false);
-        email_reg.setError("");
+//        Fname.setErrorEnabled(false);
+//        Fname.setError("");
+//        email_reg.setErrorEnabled(false);
+//        email_reg.setError("");
         pass.setErrorEnabled(false);
         pass.setError("");
         cnf_pass.setErrorEnabled(false);
@@ -386,35 +386,9 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
 
         String emailPattern="[a-zA-Z0-9._-]+@knit+\\.+ac+.+in+";
 
-        boolean isValidFname=false,isValidemail_reg=false,isValidlpass=false,isValidcnf_pass=false,isValidcourse_reg=false;
+        boolean isValidlpass=false,isValidcnf_pass=false;
 
-        if(TextUtils.isEmpty(Fname.getEditText().getText().toString().trim()))
-        {
-            Fname.setErrorEnabled(true);
-            Fname.setError("Enter Full Name");
-        }
-        else
-        {
-            isValidFname=true;
-        }
 
-        if(TextUtils.isEmpty(email_reg.getEditText().getText().toString().trim()))
-        {
-            email_reg.setErrorEnabled(true);
-            email_reg.setError("Email is required");
-        }
-        else
-        {
-            if(email_reg.getEditText().getText().toString().trim().matches(emailPattern)) {
-                isValidemail_reg = true;
-            }
-
-            else
-            {
-                email_reg.setErrorEnabled(true);
-                email_reg.setError("Enter KNIT email");
-            }
-        }
 
         if(TextUtils.isEmpty(pass.getEditText().getText().toString().trim()))
         {
@@ -442,17 +416,9 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
             {isValidcnf_pass=true;}
         }
 
-        if(!selected_course.getText().equals("Course Selected"))
-        {
-            Toast.makeText(MainActivity.this,"Select the courses",Toast.LENGTH_SHORT).show();
-            isValidcourse_reg=false;
-        }
-        else
-        {
-            isValidcourse_reg=true;
-        }
+
         boolean isvalid=false;
-         isvalid=(isValidlpass&&isValidemail_reg&&isValidFname&&isValidcnf_pass&&isValidcourse_reg) ?true:false;
+         isvalid=(isValidlpass&&isValidcnf_pass) ?true:false;
         return isvalid;
 
     }

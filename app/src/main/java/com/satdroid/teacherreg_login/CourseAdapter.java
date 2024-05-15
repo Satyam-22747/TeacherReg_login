@@ -32,7 +32,6 @@ public class CourseAdapter extends ArrayAdapter<CourseModal> {
 
         CourseModal courseModal=getItem(position);
         TextView courseNameTv=courseListView.findViewById(R.id.courseName_tv);
-
         courseNameTv.setText(courseModal.getCourse());
         return courseListView;
     }
