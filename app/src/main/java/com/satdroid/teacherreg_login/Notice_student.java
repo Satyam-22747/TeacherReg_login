@@ -70,7 +70,7 @@ public class Notice_student extends AppCompatActivity {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
                                 NoticeDataModel noticeDataModel = d.toObject(NoticeDataModel.class);
-                                Notice_List.add(noticeDataModel);
+                                Notice_List.add(0,noticeDataModel);
                             }
                             adapter.notifyDataSetChanged();
                         } else {

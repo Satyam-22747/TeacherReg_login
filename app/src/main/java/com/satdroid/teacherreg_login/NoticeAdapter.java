@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,8 +32,26 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         NoticeDataModel noticeDataModel=NoticeModallist.get(position);
-        holder.noticeTv.setText(noticeDataModel.getNotice());
-        holder.notice_date_Tv.setText((noticeDataModel.getNoticeDate()));
+
+        if(context instanceof Notice_student) {
+            holder.notice_teacer_tv.setVisibility(View.VISIBLE);
+
+            holder.noticeTv.setText(noticeDataModel.getNotice());
+            holder.notice_date_Tv.setText((noticeDataModel.getNoticeDate()));
+            holder.notice_teacer_tv.setText(noticeDataModel.getTeacherName());
+            holder.notice_time.setText(noticeDataModel.getUploadTime());
+        }
+        if(context instanceof UploadNotice)
+        {
+            holder.notice_course.setVisibility(View.VISIBLE);
+            holder.notice_sem.setVisibility(View.VISIBLE);
+
+            holder.noticeTv.setText(noticeDataModel.getNotice());
+            holder.notice_date_Tv.setText((noticeDataModel.getNoticeDate()));
+            holder.notice_course.setText(noticeDataModel.getCourseSelected());
+            holder.notice_sem.setText(noticeDataModel.getSemesterName());
+            holder.notice_time.setText(noticeDataModel.getUploadTime());
+        }
     }
 
     @Override
@@ -42,15 +61,20 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView noticeTv,notice_date_Tv;
-        // LinearLayout  linearLayout;
+        TextView noticeTv,notice_date_Tv,notice_teacer_tv,notice_course,notice_sem,notice_time;
+        LinearLayout linearLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             noticeTv=itemView.findViewById(R.id.notice_tv);
             notice_date_Tv=itemView.findViewById(R.id.date_notice_rcv);
+            notice_teacer_tv=itemView.findViewById(R.id.notice_teacher_rcv);
+            notice_course=itemView.findViewById(R.id.Course_name_notice_rcv);
+            notice_sem=itemView.findViewById(R.id.Semester_noticeRcv);
+            notice_time=itemView.findViewById(R.id.time_noticeRcv);
         }
     }
 }
+
 
 
 

@@ -201,8 +201,6 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
     void loginUser(){
 
-        login_btn.setEnabled(false);
-
         progressBar.setVisibility(View.VISIBLE);
         Courses=new ArrayList<>();
         EmailsAndData emailAndData = new EmailsAndData();
@@ -256,6 +254,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                                                         } else {
                                                             progressBar.setVisibility(View.GONE);
                                                             Toast.makeText(TeacherLoginActivity.this, "No data found in Database", Toast.LENGTH_SHORT).show();
+
                                                         }
                                                     }
                                                 });

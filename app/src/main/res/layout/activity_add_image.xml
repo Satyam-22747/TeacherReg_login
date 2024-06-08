@@ -9,24 +9,51 @@
     android:orientation="vertical"
     tools:context=".AddImage">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+<ProgressBar
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:id="@+id/pgbar_addimage"
+    android:visibility="gone"
+    android:layout_centerInParent="true"/>
 
         <TextView
-            android:id="@+id/Sub_stud_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:text="Uploaded Images"
-            android:textColor="#BCA52E"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            android:id="@+id/NoImage_tv"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:layout_gravity="center"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:id="@+id/Uploadimage_cv"
+            android:elevation="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_theme"
+                android:textSize="20sp"
+                android:text="Upload Images"
+                android:layout_gravity="center"/>
+        </androidx.cardview.widget.CardView>
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/image_recycler_teacher"
             android:layout_width="match_parent"
             android:layout_height="550dp"
-            android:layout_below="@+id/Sub_stud_tv"
-            android:id="@+id/image_recycler_teacher"/>
+            android:layout_below="@+id/Uploadimage_cv"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp" />
 
         <ProgressBar
             android:id="@+id/image_upload_pgbar"

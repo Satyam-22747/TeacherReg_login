@@ -110,17 +110,64 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                             checked.add(MCA.getSelectedItem().toString());
                             checked.add(MCAsub.getSelectedItem().toString());
                             Courses.add(checked);
+                            selected_course.setText("Course Selected");
                         }
-                        if(civilcb.isChecked())
+                         if(civilcb.isChecked())
                         {
                             ArrayList<String> checked=new ArrayList<>();
                             checked.add(civilcb.getText().toString()); //course name
                             checked.add(civil.getSelectedItem().toString());  //course semester
                             checked.add(civilsub.getSelectedItem().toString());  //course subject
                             Courses.add(checked);
+                            selected_course.setText("Course Selected");
                         }
-
-                        selected_course.setText("Course Selected");
+                        if(electricalcb.isChecked())
+                        {
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(electricalcb.getText().toString()); //course name
+                            checked.add(electrical.getSelectedItem().toString());  //course semester
+                            checked.add(electricalsub.getSelectedItem().toString());  //course subject
+                            Courses.add(checked);
+                            selected_course.setText("Course Selected");
+                        }
+                         if(electronicscb.isChecked())
+                        {
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(electronicscb.getText().toString()); //course name
+                            checked.add(electronics.getSelectedItem().toString());  //course semester
+                            checked.add(electronicssub.getSelectedItem().toString());  //course subject
+                            Courses.add(checked);
+                            selected_course.setText("Course Selected");
+                        }
+                         if(mechanicalcb.isChecked())
+                        {
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(mechanicalcb.getText().toString()); //course name
+                            checked.add(mechanical.getSelectedItem().toString());  //course semester
+                            checked.add(mechanicalsub.getSelectedItem().toString());  //course subject
+                            Courses.add(checked);
+                            selected_course.setText("Course Selected");
+                        }
+                         if(cscb.isChecked())
+                        {
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(cscb.getText().toString()); //course name
+                            checked.add(cs.getSelectedItem().toString());  //course semester
+                            checked.add(cssub.getSelectedItem().toString());  //course subject
+                            Courses.add(checked);
+                            selected_course.setText("Course Selected");
+                        }
+                        if(ITcb.isChecked())
+                        {
+                            ArrayList<String> checked=new ArrayList<>();
+                            checked.add(ITcb.getText().toString()); //course name
+                            checked.add(IT.getSelectedItem().toString());  //course semester
+                            checked.add(ITsub.getSelectedItem().toString());  //course subject
+                            Courses.add(checked);
+                            selected_course.setText("Course Selected");
+                        }
+//                       else
+//                            selected_course.setText("Course Not Selected");
 
                     }
                 });
@@ -139,7 +186,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
 
                 TextInputInit();
 
-               // if(CheckField()) {
+                if(CheckField()) {
 
                     FAuth.createUserWithEmailAndPassword(T_email,pass.getEditText().getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -150,13 +197,9 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                 DocumentReference dbTeachers=db.collection("Teacher").document(FAuth.getCurrentUser().getUid());
 
                 HashMap<String,String> hashMap1=new HashMap<>();
-//                                for(int i=0;i<Courses.size();i++)
-//                                {
-//                                    hashMap1.put("Course "+(i+1),(Courses.get(i)).get(0)+" Sem: "+(Courses.get(i)).get(1));
-//                                }
                                 hashMap1.put("Name",T_name);
                                 hashMap1.put("Password",pass.getEditText().getText().toString().trim());
-                                hashMap1.put("Email Id",T_email);
+                                hashMap1.put("EmailId",T_email);
                                 dbTeachers.set(hashMap1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -184,10 +227,8 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                                                 }
                                             });
                                         }
-
                                         Toast.makeText(MainActivity.this,"Account created",Toast.LENGTH_SHORT).show();
                                         Intent RegToDash = new Intent(MainActivity.this, TeacherLoginActivity.class);
-                                    //    RegToDash.putExtra("Courses List", Courses);
                                         startActivity(RegToDash);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
@@ -196,7 +237,6 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                                         Toast.makeText(MainActivity.this,"Account not created",Toast.LENGTH_SHORT).show();
                                     }
                                 });
-
                             }
                             else
                             {
@@ -206,6 +246,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
                     });
             //    }
             }
+        }
         });
 
     }
@@ -217,6 +258,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
         ITcb = alertLayout.findViewById(R.id.IT_CheckBox);
         mechanicalcb = alertLayout.findViewById(R.id.Mechanical_CheckBox);
         electricalcb=alertLayout.findViewById(R.id.Electrical_CheckBox);
+        cscb=alertLayout.findViewById(R.id.Computer_Science_CheckBox);
     }
     private void spinnerViewSem(View alertLayout)
     {
@@ -417,7 +459,7 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
         }
 
 
-        boolean isvalid=false;
+        boolean isvalid;
          isvalid=(isValidlpass&&isValidcnf_pass) ?true:false;
         return isvalid;
 

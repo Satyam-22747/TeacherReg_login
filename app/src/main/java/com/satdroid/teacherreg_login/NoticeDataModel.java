@@ -1,18 +1,36 @@
 package com.satdroid.teacherreg_login;
 
 public class NoticeDataModel {
-   private String CourseSelected,Notice,semesterName,subjectName,NoticeDate;
+   private String CourseSelected,Notice,semesterName,subjectName,NoticeDate,TeacherName,UploadTime;
 
-    public NoticeDataModel(String courseSelected, String notice, String semesterName, String subjectName, String noticeDate) {
+    public NoticeDataModel(String courseSelected, String notice, String semesterName, String subjectName, String noticeDate,String teachername, String uploadTime) {
         CourseSelected = courseSelected;
         Notice = notice;
         this.semesterName = semesterName;
         this.subjectName = subjectName;
         NoticeDate = noticeDate;
+        TeacherName=teachername;
+        UploadTime=uploadTime;
     }
 
     public NoticeDataModel() {
 
+    }
+
+    public String getUploadTime() {
+        return UploadTime;
+    }
+
+    public void setUploadTime(String uploadTime) {
+        UploadTime = uploadTime;
+    }
+
+    public String getTeacherName() {
+        return TeacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        TeacherName = teacherName;
     }
 
     public String getCourseSelected() {

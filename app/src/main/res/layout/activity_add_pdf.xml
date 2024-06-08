@@ -11,19 +11,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/pgbar_addpdf"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
+
         <TextView
-            android:id="@+id/Sub_stud_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:text="Upload PDF"
-            android:textColor="#BCA52E"
-            android:textSize="30sp" />
+            android:textSize="20sp"
+            android:id="@+id/NoPdf_tv"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:layout_gravity="center"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:id="@+id/Uploadpdf_cv"
+            android:elevation="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_theme"
+                android:textSize="20sp"
+                android:text="Uploaded Pdf"
+                android:layout_gravity="center"/>
+        </androidx.cardview.widget.CardView>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="570dp"
-            android:layout_below="@+id/Sub_stud_tv"
+            android:layout_below="@+id/Uploadpdf_cv"
             android:id="@+id/pdf_recycler_teacher"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

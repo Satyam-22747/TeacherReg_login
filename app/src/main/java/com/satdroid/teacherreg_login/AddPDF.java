@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,14 +28,19 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class AddPDF extends AppCompatActivity {
 
@@ -50,15 +56,26 @@ public class AddPDF extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private PdfAdapterStd adapter;
-    private ArrayList<ImageDataModal> imagesList;
+    private ArrayList<PdfDataModal> PdfList;
     private ImageView pdfImage;
     private TextView pdfCount_tv;
+    private ProgressBar progressBarPdf;
+    private int count;
+    private FirebaseAuth FAuth;
+    private String PdfTeacher="",PdfTime="";
 
+    private SimpleDateFormat simpleDateFormat;
+    private Calendar calendar;
+    private TextView noPdf_tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pdf);
 
+        FAuth=FirebaseAuth.getInstance();
+        progressBarPdf=findViewById(R.id.pgbar_addpdf);
+        calendar = Calendar.getInstance();
+        noPdf_tv=findViewById(R.id.NoPdf_tv);
         dbF=FirebaseFirestore.getInstance();
         ft_sel_pdf = findViewById(R.id.ftbtn_pdf);
         mArrayUri = new ArrayList<Uri>();
@@ -67,15 +84,35 @@ public class AddPDF extends AppCompatActivity {
 
         Intent intent=getIntent();
         course_selected=(ArrayList<String>)intent.getSerializableExtra("Selected Course");
+
+        //fetchTeacherName
+        dbF.collection("Teacher").document(FAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Teacher_data_Modal teacher_data_modal =documentSnapshot.toObject(Teacher_data_Modal.class);
+                PdfTeacher=PdfTeacher+teacher_data_modal.getName();
+                progressBarPdf.setVisibility(View.VISIBLE);
+                Toast.makeText(AddPDF.this, "Teacher name fetched: "+PdfTeacher, Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
         //recycler
-        imagesList=new ArrayList<>();
+        PdfList=new ArrayList<>();
         recyclerView = findViewById(R.id.pdf_recycler_teacher);
         recyclerView.setHasFixedSize (true);
         recyclerView.setLayoutManager(new LinearLayoutManager(AddPDF.this));
 
         //recycler view adapter
-        adapter=new PdfAdapterStd(AddPDF.this,imagesList);
+        adapter=new PdfAdapterStd(AddPDF.this,PdfList);
         recyclerView.setAdapter(adapter);
+
+
 
         GetPDFDetails();
 
@@ -97,6 +134,8 @@ public class AddPDF extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                alertDialog1.dismiss();
+                progressBarPdf.setVisibility(View.VISIBLE);
                 UploadPdffirebase();
 
             }
@@ -131,7 +170,7 @@ public class AddPDF extends AppCompatActivity {
                     // adding pdfuri in array
                     Uri pdfurl = data.getClipData().getItemAt(i).getUri();
                     mArrayUri.add(pdfurl);
-                    Toast.makeText(this, "picked pdf", Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(this, "picked pdf", Toast.LENGTH_SHORT).show();
 
                 }
                 // setting 1st selected image into image switcher
@@ -155,11 +194,9 @@ public class AddPDF extends AppCompatActivity {
     {
         for (int i = 0; i < mArrayUri.size(); i++)
         {
-            Toast.makeText(AddPDF.this,"Inside loop 1",Toast.LENGTH_SHORT).show();
             Uri IndividualPdf = mArrayUri.get(i);
             if (IndividualPdf != null) {
                 StorageReference ImageFolder = FirebaseStorage.getInstance().getReference().child("ItemPDFs");
-                Toast.makeText(AddPDF.this,"Inside firebase storage 2",Toast.LENGTH_SHORT).show();
                 final StorageReference PDFName = ImageFolder.child("Pdf" + i + ": " + System.currentTimeMillis());
 
                 int finalI = i;
@@ -169,7 +206,7 @@ public class AddPDF extends AppCompatActivity {
                         PDFName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Toast.makeText(AddPDF.this," 3 Dwd Url obtained "+uri,Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(AddPDF.this," 3 Dwd Url obtained "+uri,Toast.LENGTH_SHORT).show();
                                 PDFUrlList(finalI, String.valueOf(uri));
                             }
                         });
@@ -184,71 +221,85 @@ public class AddPDF extends AppCompatActivity {
     {
         pdfUrl.add(Urls);
         if(pdfUrl.size()==mArrayUri.size()) {
-            Toast.makeText(AddPDF.this, "Length of list: " + pdfUrl.size(), Toast.LENGTH_SHORT).show();
             UploadPDFFirestore(pdfUrl);
         }
     }
 
     public void UploadPDFFirestore(ArrayList<String> dwdURls) {
         //   we need list that images urls
-        Toast.makeText(AddPDF.this,"4 dwdURls Size: "+dwdURls.size(),Toast.LENGTH_SHORT).show();
         if(!dwdURls.isEmpty()&&dwdURls.size()==mArrayUri.size())
         {
             CollectionReference images_teacher = dbF.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
                     .document(course_selected.get(2)).collection("Pdf");
-            HashMap<String, String> imageHash = new HashMap<>();
+//            HashMap<String, String> imageHash = new HashMap<>();
 
+            String pdf_date= new SimpleDateFormat("d-MM-yyyy", Locale.getDefault()).format(new Date());
+            simpleDateFormat = new SimpleDateFormat("KK:mm aaa ");
             for (int i = 0; i < dwdURls.size(); i++) {
-                imageHash.put("ImageUrl", dwdURls.get(i));
 
-                imageHash.put("CourseSelected", course_selected.get(0));
-                imageHash.put("semesterName", course_selected.get(1));
-                imageHash.put("subjectName", course_selected.get(2));
+                PdfTime = simpleDateFormat.format(calendar.getTime());
+                count=count+1;
+                PdfDataModal uploadPdfmodal=new PdfDataModal(course_selected.get(0),count,pdf_date,PdfTime,dwdURls.get(i),
+                        course_selected.get(1),course_selected.get(2),PdfTeacher);
 
-                images_teacher.add(imageHash).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                images_teacher.add(uploadPdfmodal).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddPDF.this, "Images url in firestore 4", Toast.LENGTH_SHORT).show();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddPDF.this, "Images url not in firestore 4", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddPDF.this, "Pdf not uploaded", Toast.LENGTH_SHORT).show();
+                        progressBarPdf.setVisibility(View.GONE);
 
                     }
-                });}
+                });
+            }
+            Toast.makeText(AddPDF.this, "PDf Uploaded", Toast.LENGTH_SHORT).show();
+            progressBarPdf.setVisibility(View.GONE);
+
         }
 
         else {
-            Toast.makeText(AddPDF.this, "dwdURls is empty 5", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddPDF.this, "Some error occured", Toast.LENGTH_SHORT).show();
+            progressBarPdf.setVisibility(View.GONE);
         }
     }
 
     private void GetPDFDetails()
     {
-        Toast.makeText(AddPDF.this, "Inside get pdf", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(AddPDF.this, "Inside get pdf", Toast.LENGTH_SHORT).show();
 
         dbF.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1)).document(course_selected.get(2))
-                .collection("Pdf").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                .collection("Pdf").orderBy("pdfCounter", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (!queryDocumentSnapshots.isEmpty()) {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
-                                ImageDataModal imageDataModal = d.toObject(ImageDataModal.class);
-                                imagesList.add(imageDataModal);
+                                PdfDataModal pdfDataModal = d.toObject(PdfDataModal.class);
+                                PdfList.add(pdfDataModal);
+                                Toast.makeText(AddPDF.this, "pdf found", Toast.LENGTH_SHORT).show();
                             }
-
+                            count=PdfList.size();
                             adapter.notifyDataSetChanged();
+                            progressBarPdf.setVisibility(View.GONE);
+                            adapter.notifyDataSetChanged();
+                            noPdf_tv.setText("");
+
                         } else {
-                            Toast.makeText(AddPDF.this, "No data found in Database", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(AddPDF.this, "No data found in Database", Toast.LENGTH_SHORT).show();
+                            noPdf_tv.setText("No Pdf Uploaded");
+                            progressBarPdf.setVisibility(View.GONE);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(AddPDF.this, "Pdf fetching failed", Toast.LENGTH_SHORT).show();
+                        progressBarPdf.setVisibility(View.GONE);
                     }
                 });
     }

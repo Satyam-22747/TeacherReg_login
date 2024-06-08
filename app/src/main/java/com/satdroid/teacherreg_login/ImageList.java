@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,6 @@ public class ImageList extends AppCompatActivity {
     RecyclerView recyclerView;
     private ImageAdapterStd adapter;
     String Course_Name,course_subject;
-    TextView subjectName;
     int  Course_Semester;
     ArrayList<ImageDataModal> imagesList;
 
@@ -42,14 +43,10 @@ public class ImageList extends AppCompatActivity {
         setContentView(R.layout.activity_image_list);
 
         firestore=FirebaseFirestore.getInstance();
-        subjectName=findViewById(R.id.Sub_stud_tv);
-
         Intent iStudImagelist=getIntent();
         Course_Name=iStudImagelist.getStringExtra("Course_Name");
        Course_Semester=iStudImagelist.getIntExtra("Course_sem",0);
         course_subject=iStudImagelist.getStringExtra("Course_subjects");
-        subjectName.setText(course_subject);
-
         //recyclerview
         firestore=FirebaseFirestore.getInstance();
         imagesList=new ArrayList<>();
@@ -57,7 +54,6 @@ public class ImageList extends AppCompatActivity {
         recyclerView.setHasFixedSize (true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ImageList.this));
         //firestore
-
         adapter=new ImageAdapterStd(ImageList.this,imagesList);
         recyclerView.setAdapter(adapter);
         GetImageDetails();

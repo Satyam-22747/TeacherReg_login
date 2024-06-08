@@ -123,7 +123,7 @@ public class StudentDetails extends AppCompatActivity implements DatePickerDialo
                                 }
                                 for (DocumentChange dc:value.getDocumentChanges()) {
                                     if (dc.getType() == DocumentChange. Type.ADDED){
-                                        Toast.makeText(StudentDetails.this, "Att fetched", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(StudentDetails.this, "Att fetched", Toast.LENGTH_SHORT).show();
                                         student_attendence_DetailList.add(dc.getDocument().toObject (studentAttendenceModal.class));
                                     }
                                 }

@@ -30,79 +30,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-//        mAuth=FirebaseAuth.getInstance();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-////            email_input=findViewById(R.id.email_login);
-////            String email=email_input.getEditText().getText().toString().trim();
-//            db = FirebaseFirestore.getInstance();
-//
-//            EmailsAndData emailsAndDatauser=new EmailsAndData();
-//            if( emailsAndDatauser.checkEmailData(currentUser.getEmail())!=null)
-//            {
-//                Courses=new ArrayList<>();
-//
-//                db.collection("Teacher").document(mAuth.getCurrentUser().getUid())
-//                        .collection("Selected course").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                            @Override
-//                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                                if (!queryDocumentSnapshots.isEmpty()) {
-//
-//                                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-//                                    for (DocumentSnapshot d : list) {
-//                                        CourseTeacherModal courseTeacherModal = d.toObject(CourseTeacherModal.class);
-//                                        ArrayList<String> checked = new ArrayList<>();
-//                                        checked.add(courseTeacherModal.getCourseSelected());
-//                                        checked.add(courseTeacherModal.getSemester());
-//                                        checked.add(courseTeacherModal.getSubject());
-//                                        Courses.add(checked);
-//                                    }
-//                                 //   progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(SplashScreen.this, "Login success.", Toast.LENGTH_SHORT).show();
-//                                    Intent intent = new Intent(SplashScreen.this, TeacherDashboard.class);
-//                                    intent.putExtra("Courses List", Courses);
-//                                    startActivity(intent);
-//                                    finish();
-//
-//                                    //adapter.notifyDataSetChanged();
-//                                } else {
-//                                  //  progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(SplashScreen.this, "No data found in Database", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//            }
-//
-//            else if(emailsAndDatauser.checkEmailDataStudent(currentUser.getEmail())!=null)
-//            {
-//                db.collection("Student").document(mAuth.getCurrentUser().getUid())
-//                        .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                            @Override
-//                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                                if(documentSnapshot.exists()) {
-//                                    StudentDetailDataModel studentDetailDataModel = documentSnapshot.toObject(StudentDetailDataModel.class);
-//                                  //  progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(SplashScreen.this, "Login success.", Toast.LENGTH_SHORT).show();
-//                                    Intent intentStud = new Intent(SplashScreen.this, StudentDashboard.class);
-//                                    intentStud.putExtra("Course_name", studentDetailDataModel.getCourse());
-//                                    startActivity(intentStud);
-//                                    finish();
-//                                }
-//                                else {
-//                                  //  progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(SplashScreen.this, "No student course",
-//                                            Toast.LENGTH_SHORT).show();
-//                                } }
-//                        }).addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                              //  progressBar.setVisibility(View.GONE);
-//                                Toast.makeText(SplashScreen.this, "Failed to fetch student course", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//            }
-//        }
+
     }
 
 
@@ -118,8 +46,6 @@ public class SplashScreen extends AppCompatActivity {
                 mAuth=FirebaseAuth.getInstance();
                 FirebaseUser currentUser = mAuth.getCurrentUser();
                 if(currentUser != null){
-//            email_input=findViewById(R.id.email_login);
-//            String email=email_input.getEditText().getText().toString().trim();
                     db = FirebaseFirestore.getInstance();
 
                     EmailsAndData emailsAndDatauser=new EmailsAndData();
@@ -153,6 +79,10 @@ public class SplashScreen extends AppCompatActivity {
                                         } else {
                                             //  progressBar.setVisibility(View.GONE);
                                             Toast.makeText(SplashScreen.this, "No data found in Database", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(SplashScreen.this, TeacherDashboard.class);
+                                            intent.putExtra("Courses List", Courses);
+                                            startActivity(intent);
+                                            finish();
                                         }
                                     }
                                 });

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -23,18 +24,68 @@
             android:layout_height="wrap_content"
             android:id="@+id/notice_tv"
             android:padding="10dp"
-            android:text="ll"/>
+            android:text="ll"
+            android:layout_below="@+id/date_notice_rcv"/>
 
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:text="20/04/2020"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="30dp"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:id="@+id/date_notice_rcv"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/notice_tv"/>
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:text="Teacher Name"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:id="@+id/notice_teacher_rcv"
+                android:layout_alignParentLeft="true" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/course_sem_rcv_notice"
+                android:layout_marginLeft="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Course Name"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:id="@+id/Course_name_notice_rcv"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Course Semester"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:id="@+id/Semester_noticeRcv"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="NoticeTime"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/notice_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:id="@+id/time_noticeRcv"/>
         </RelativeLayout>
 
+
+
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

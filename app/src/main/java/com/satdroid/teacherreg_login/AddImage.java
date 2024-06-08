@@ -1,6 +1,9 @@
 package com.satdroid.teacherreg_login;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -13,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageSwitcher;
@@ -30,19 +34,30 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.core.operation.Merge;
+import com.google.firebase.firestore.AggregateQuery;
+import com.google.firebase.firestore.AggregateQuerySnapshot;
+import com.google.firebase.firestore.AggregateSource;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class AddImage extends AppCompatActivity {
 
@@ -56,7 +71,6 @@ public class AddImage extends AppCompatActivity {
     private FirebaseAuth FAuth;
     private FirebaseFirestore db;
 
-  //  private String CourseSelected;
 private ArrayList<String> course_selected;
 
     private RecyclerView recyclerView;
@@ -65,13 +79,22 @@ private ArrayList<String> course_selected;
     private TextView imageCount_tv;
     private ProgressBar imagePgbar;
     private LinearLayout linearLayout;
-
+    private String imageTime;
+    private SimpleDateFormat simpleDateFormat;
+    private Calendar calendar;
+    private String imageTeacher="";
+    private String imageCount="";
+    private int count;
+    private ProgressBar progressBarimage;
+    private TextView noImage_textview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_image);
 
 
+        progressBarimage=findViewById(R.id.pgbar_addimage);
+        calendar = Calendar.getInstance();
         ft_sel_img = findViewById(R.id.ftbtn_image);
         FAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -79,8 +102,24 @@ private ArrayList<String> course_selected;
         linearLayout=findViewById(R.id.addimage_linearLayout);
         ImageUrl=new ArrayList<>();
         Intent intent=getIntent();
+        noImage_textview=findViewById(R.id.NoImage_tv);
 
         course_selected=(ArrayList<String>)intent.getSerializableExtra("Selected Course");
+        //fetchTeacherName
+        db.collection("Teacher").document(FAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Teacher_data_Modal teacher_data_modal =documentSnapshot.toObject(Teacher_data_Modal.class);
+                imageTeacher=imageTeacher+teacher_data_modal.getName();
+                progressBarimage.setVisibility(View.VISIBLE);
+                //Toast.makeText(AddImage.this, "Teacher name fetched: "+imageTeacher, Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
         //recycler
         imagesList=new ArrayList<>();
@@ -92,6 +131,30 @@ private ArrayList<String> course_selected;
         adapter=new ImageAdapterStd(AddImage.this,imagesList);
         recyclerView.setAdapter(adapter);
         GetImageDetails();
+//        db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1)).document(course_selected.get(2))
+//                .collection("Images").orderBy("imageCounter", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                        imagesList=new ArrayList<>();
+//                        if (error != null) {
+//                            Log.w(TAG, "Listen failed.", error);
+//                            return;
+//                        }
+//
+//                     //   List<String> cities = new ArrayList<>();
+//                        for (QueryDocumentSnapshot doc : value) {
+////                            if (doc.get("name") != null) {
+////                                cities.add(doc.getString("name"));
+////                            }
+//                            ImageDataModal imageDataModal = doc.toObject(ImageDataModal.class);
+//                            imagesList.add(imageDataModal);
+//                        }
+//                        count=imagesList.size();
+//                        Toast.makeText(AddImage.this, "Image collection size: "+count, Toast.LENGTH_SHORT).show();
+//                        adapter.notifyDataSetChanged();
+//                    //    Log.d(TAG, "Current cites in CA: " + cities);
+//                    }
+//                });
         ft_sel_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +206,6 @@ private ArrayList<String> course_selected;
 
             }
         });
-
     }
 
     @Override
@@ -182,10 +244,8 @@ private ArrayList<String> course_selected;
 
     public void UploadImagefirebase()
     {
-
         for (int i = 0; i < mArrayUri.size(); i++)
         {
-       //     Toast.makeText(AddImage.this,"Inside loop 1",Toast.LENGTH_SHORT).show();
             Uri IndividualImage = mArrayUri.get(i);
             if (IndividualImage != null) {
                 StorageReference ImageFolder = FirebaseStorage.getInstance().getReference().child("ItemImages");
@@ -209,39 +269,45 @@ private ArrayList<String> course_selected;
             }
         }
     }
-
      public void UploadImageFirestore(ArrayList<String> dwdURls) {
 
          if(!dwdURls.isEmpty()&&dwdURls.size()==mArrayUri.size()) {
 
              CollectionReference images_teacher = db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1))
                      .document(course_selected.get(2)).collection("Images");
-             HashMap<String, String> imageHash = new HashMap<>();
 
-             for (int i = 0; i < dwdURls.size(); i++) {
-                 imageHash.put("ImageUrl", dwdURls.get(i));
+             String image_date= new SimpleDateFormat("d-MM-yyyy", Locale.getDefault()).format(new Date());
+             simpleDateFormat = new SimpleDateFormat("KK:mm aaa ");
 
-                 imageHash.put("CourseSelected", course_selected.get(0));
-                 imageHash.put("semesterName", course_selected.get(1));
-                 imageHash.put("subjectName", course_selected.get(2));
+             for (int i = 0; i < dwdURls.size(); i++)
+             {
+                 imageTime = simpleDateFormat.format(calendar.getTime());
+                 count=count+1;
+                 imageCount= String.valueOf(count);
+                 ImageDataModal uploadImagemodal=new ImageDataModal(dwdURls.get(i),course_selected.get(0),
+                         course_selected.get(1),course_selected.get(2),image_date,imageTime,count,imageTeacher);
 
-                    images_teacher.add(imageHash).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    images_teacher.add(uploadImagemodal).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            imagePgbar.setVisibility(View.GONE);
+
                             linearLayout.setClickable(true);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
-                        public void onFailure(@NonNull Exception e) {
+                        public void onFailure(@NonNull Exception e)
+
+                        {
                             imagePgbar.setVisibility(View.GONE);
                             linearLayout.setClickable(true);
                             Toast.makeText(AddImage.this, "Image not uploaded", Toast.LENGTH_SHORT).show();
-
                         }
-                    });}
+                    });
              }
+             imagePgbar.setVisibility(View.GONE);
+             Toast.makeText(AddImage.this, "Image uploaded", Toast.LENGTH_SHORT).show();
+         }
         }
 
     void ImageUrlList(int i,String Urls)
@@ -257,7 +323,7 @@ private ArrayList<String> course_selected;
     private void GetImageDetails()
     {
         db.collection("Courses").document(course_selected.get(0)).collection(course_selected.get(1)).document(course_selected.get(2))
-                .collection("Images").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                .collection("Images").orderBy("imageCounter", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (!queryDocumentSnapshots.isEmpty()) {
@@ -266,20 +332,23 @@ private ArrayList<String> course_selected;
                                 ImageDataModal imageDataModal = d.toObject(ImageDataModal.class);
                                 imagesList.add(imageDataModal);
                             }
-
+                            count=imagesList.size();
                             adapter.notifyDataSetChanged();
+                            progressBarimage.setVisibility(View.GONE);
+                            noImage_textview.setText("");
                         } else {
-                            Toast.makeText(AddImage.this, "No data found in Database", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(AddImage.this, "No data found in Database", Toast.LENGTH_SHORT).show();
+                            noImage_textview.setText("No image uploaded");
+                            progressBarimage.setVisibility(View.GONE);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(AddImage.this, "Image fetching failed", Toast.LENGTH_SHORT).show();
-
+                        progressBarimage.setVisibility(View.GONE);
                     }
                 });
     }
-
     }
 

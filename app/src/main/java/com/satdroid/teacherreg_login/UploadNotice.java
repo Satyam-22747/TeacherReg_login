@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -33,6 +35,10 @@ public class UploadNotice extends AppCompatActivity {
 
     private RecyclerView noticeRecycler;
     private NoticeAdapter adapter;
+    private FirebaseAuth mAuth;
+    private String teacher_name="";
+    private TextView noNotice_tv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class UploadNotice extends AppCompatActivity {
         setContentView(R.layout.activity_upload_notice);
 
 
+        noNotice_tv=findViewById(R.id.noNotice_tv);
         NoticeFirestore=FirebaseFirestore.getInstance();
         Notice_List=new ArrayList<>();
         Intent inotice=getIntent();
@@ -50,19 +57,31 @@ public class UploadNotice extends AppCompatActivity {
 
         adapter=new NoticeAdapter(UploadNotice.this,Notice_List);
         noticeRecycler.setAdapter(adapter);
+        mAuth=FirebaseAuth.getInstance();
+
+        String teacher_email= mAuth.getCurrentUser().getEmail().trim();
+        NoticeFirestore.collection("Teacher").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Teacher_data_Modal teacher_data_modal =documentSnapshot.toObject(Teacher_data_Modal.class);
+                teacher_name=teacher_name+teacher_data_modal.getName();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
         GetNoticeDetails();
 
-
         floatingActionButtonNotice=findViewById(R.id.ftbtn_notice);
-
-
-
         floatingActionButtonNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent  iCreateNotice=new Intent(UploadNotice.this,CreateNotice.class);
                 iCreateNotice.putExtra("Selected Course",course_selected);
+                iCreateNotice.putExtra("Teacher Name",teacher_name);
                 startActivity(iCreateNotice);
                 finish();
             }
@@ -80,19 +99,19 @@ public class UploadNotice extends AppCompatActivity {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
                                 NoticeDataModel noticeDataModel = d.toObject(NoticeDataModel.class);
-                                Notice_List.add(noticeDataModel);
-                                Toast.makeText(UploadNotice.this, "fetching notice", Toast.LENGTH_SHORT).show();
+                                Notice_List.add(0,noticeDataModel);
                             }
+                            noNotice_tv.setText("");
                             adapter.notifyDataSetChanged();
                         } else {
-                            Toast.makeText(UploadNotice.this, "No Notices Uploaded", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(UploadNotice.this, "No Notices Uploaded", Toast.LENGTH_SHORT).show();
+                            noNotice_tv.setText("No notice Uploaded");
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(UploadNotice.this, "Notice fetching failed", Toast.LENGTH_SHORT).show();
-
                     }
                 });
     }

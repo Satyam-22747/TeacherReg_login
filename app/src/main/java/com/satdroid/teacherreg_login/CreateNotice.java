@@ -14,12 +14,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -31,21 +33,31 @@ public class CreateNotice extends AppCompatActivity {
     private FirebaseFirestore dbNotice;
     private ProgressBar progressBarNotice;
     private ArrayList<String> courseDetail;
+    private String tname="";
+    private String dateTime;
+    private SimpleDateFormat simpleDateFormat;
+    private Calendar calendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_notice);
 
+        calendar = Calendar.getInstance();
+//        simpleDateFormat = new SimpleDateFormat("KK:mm aaa ");
+//        dateTime = simpleDateFormat.format(calendar.getTime());
+
         createNotice_textINput = findViewById(R.id.writeNotice);
         UploadNotice_btn = findViewById(R.id.upload_notice_btn);
         progressBarNotice=findViewById(R.id.pg_notice);
+
 
         dbNotice = FirebaseFirestore.getInstance();
 
         Intent iCreatenotice = getIntent();
 
         courseDetail = (ArrayList<String>) iCreatenotice.getSerializableExtra("Selected Course");
-
+        tname=tname+iCreatenotice.getStringExtra("Teacher Name");
         UploadNotice_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +72,11 @@ public class CreateNotice extends AppCompatActivity {
                 }
                 if (isValidltext) {
                     progressBarNotice.setVisibility(View.VISIBLE);
+
                     String today_date = new SimpleDateFormat("d-MM-yyyy", Locale.getDefault()).format(new Date());
+
+                    simpleDateFormat = new SimpleDateFormat("KK:mm aaa ");
+                    dateTime = simpleDateFormat.format(calendar.getTime());
 
                     CollectionReference notice_teacher = dbNotice.collection("Courses").document(courseDetail.get(0)).collection(courseDetail.get(1))
                             .document("Notices").collection(today_date);
@@ -73,6 +89,9 @@ public class CreateNotice extends AppCompatActivity {
                     NoticeHash.put("semesterName", courseDetail.get(1));
                     NoticeHash.put("subjectName", courseDetail.get(2));
                     NoticeHash.put("NoticeDate", today_date);
+                    NoticeHash.put("TeacherName",tname);
+                    NoticeHash.put("UploadTime",dateTime);
+
 
                     notice_teacher.add(NoticeHash).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override

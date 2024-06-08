@@ -65,45 +65,13 @@ public class TakeAttendence extends AppCompatActivity implements AttendenceListe
         recyclerStudent.setAdapter(studentDetailsAdapter);
 
         getStuddents();
+
         studentAttendenceModalArrayList=new ArrayList<>();
         save_attendenceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attendencePGbar.setVisibility(View.VISIBLE);
-                if(studentAttendenceModalArrayList.isEmpty()) {
-                    Toast.makeText(TakeAttendence.this, "Empty attendence can not be saved", Toast.LENGTH_SHORT).show();
-                    attendencePGbar.setVisibility(View.GONE);
-                }
-                else {
-                    attendencePGbar.setVisibility(View.VISIBLE);
-                    FAuth= FirebaseAuth.getInstance();
+                saveAttendence();
 
-                    String today_date = new SimpleDateFormat("d-MM-yyyy", Locale.getDefault()).format(new Date());
-
-                    Toast.makeText(TakeAttendence.this, "Size: " + studentAttendenceModalArrayList.size(), Toast.LENGTH_SHORT).show();
-
-                    for(int i=0;i<studentAttendenceModalArrayList.size();i++)
-                    {
-                        DocumentReference courseCollection = dbSave.collection("Teacher").document(FAuth.getCurrentUser().getUid())
-                                .collection("StudentAttendence").document(course_selected.get(0)).collection(course_selected.get(1))
-                                .document(course_selected.get(2)).collection(today_date).document(studentAttendenceModalArrayList.get(i).getRollNO());
-                        courseCollection.set(studentAttendenceModalArrayList.get(i)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(TakeAttendence.this, "Attendence Saved",Toast.LENGTH_SHORT).show();
-                                attendencePGbar.setVisibility(View.GONE);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                attendencePGbar.setVisibility(View.GONE);
-                                Toast.makeText(TakeAttendence.this, "Attendence save failed",Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                    attendencePGbar.setVisibility(View.GONE);
-             //       Toast.makeText(TakeAttendence.this, "Attendence Saved",Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }
@@ -130,6 +98,41 @@ public class TakeAttendence extends AppCompatActivity implements AttendenceListe
                         attendencePGbar.setVisibility(View.GONE);
                     }
                 });
+    }
+
+    public void saveAttendence()
+    {
+        attendencePGbar.setVisibility(View.VISIBLE);
+        if(studentAttendenceModalArrayList.isEmpty()) {
+            Toast.makeText(TakeAttendence.this, "Empty attendence can not be saved", Toast.LENGTH_SHORT).show();
+            attendencePGbar.setVisibility(View.GONE);
+        }
+        else {
+            FAuth= FirebaseAuth.getInstance();
+            String today_date = new SimpleDateFormat("d-MM-yyyy", Locale.getDefault()).format(new Date());
+            Toast.makeText(TakeAttendence.this, "Size: " + studentAttendenceModalArrayList.size(), Toast.LENGTH_SHORT).show();
+            int i;
+            for(i=0;i<studentAttendenceModalArrayList.size();i++)
+            {
+                DocumentReference courseCollection = dbSave.collection("Teacher").document(FAuth.getCurrentUser().getUid())
+                        .collection("StudentAttendence").document(course_selected.get(0)).collection(course_selected.get(1))
+                        .document(course_selected.get(2)).collection(today_date).document(studentAttendenceModalArrayList.get(i).getRollNO());
+                courseCollection.set(studentAttendenceModalArrayList.get(i)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        attendencePGbar.setVisibility(View.GONE);
+                        Toast.makeText(TakeAttendence.this, "Attendence save failed",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            attendencePGbar.setVisibility(View.GONE);
+            Toast.makeText(TakeAttendence.this, "Attendence Saved", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override

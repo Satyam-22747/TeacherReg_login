@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class StudentDashboard extends AppCompatActivity {
 
@@ -27,11 +29,19 @@ public class StudentDashboard extends AppCompatActivity {
     private Toolbar toolbar;
 
     // ArrayList<CourseModal> Sub_List=new ArrayList<>();
-
+//    String dateTime;
+//    Calendar calendar;
+//    SimpleDateFormat simpleDateFormat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
+
+//        calendar = Calendar.getInstance();
+//        simpleDateFormat = new SimpleDateFormat("KK:mm aaa ");
+//        dateTime = simpleDateFormat.format(calendar.getTime()).toString();
+
+        //Toast.makeText(StudentDashboard.this,"Time: "+dateTime,Toast.LENGTH_SHORT).show();
 
         course_name_TV=findViewById(R.id.Course_TV_stud);
         toolbar=findViewById(R.id.toolbar);

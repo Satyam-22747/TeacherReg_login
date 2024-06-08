@@ -118,7 +118,7 @@
     </string-array>
 
     <string-array name="Civil_subjects_5_sem">
-        <item>Managerial Economics / Industrial Management</item>
+        <item>Managerial Economics or Industrial Management</item>
         <item>Geotechnical Engineering-I</item>
         <item>Environmental Engineering-I</item>
         <item>Design of Concrete Structures I</item>
@@ -138,7 +138,7 @@
         <item>Elective Department Course I</item>
         <item>Geotechnical Engineering II Lab</item>
         <item>STRUCTURAL DETAILING LAB</item>
-        <item>Survey Camp/ Minor Project II</item>
+        <item>Survey Camp or Minor Project II</item>
         <item>Seminar</item>
         <item>General Proficiency</item>
     </string-array>
@@ -169,10 +169,10 @@
         <item>Subject</item>
         <item>Engineering Physics/ Engineering Chemistry</item>
         <item>Engineering Mathematics-I</item>
-        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
         <item>Programming for Problem Solving Fundamentals of Mechanical Engineering and Mechatronics</item>
-        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
-        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
         <item>Programming for Problem Solving English Language Lab</item>
         <item>Engineering Graphics and Design L Mechanical Workshop Lab</item>
         <item>AI For Engineering/ Emerging Technology for Engineering</item>
@@ -180,21 +180,21 @@
     </string-array>
 
     <string-array name="CS_subjects_2_sem">
-        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Physics or Engineering Chemistry</item>
         <item>Engineering Mathematics-II</item>
         <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
-        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
         <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
-        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
-        <item>Programming for Problem Solving / English Language Lab</item>
-        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
-        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
+        <item>AI For Engineering or Emerging Technology for Engineering</item>
         <item>Soft Skill I</item>
     </string-array>
 
     <string-array name="CS_subjects_3_sem">
-        <item>Engineering Science Course/Maths IV</item>
-        <item>Technical Communication/Universal Human values</item>
+        <item>Engineering Science Course or Maths IV</item>
+        <item>Technical Communication or Universal Human values</item>
         <item>Data Structure</item>
         <item>Computer Organization and Architecture</item>
         <item>Discrete Structures and Theory of Logic</item>
@@ -206,8 +206,8 @@
     </string-array>
 
     <string-array name="CS_subjects_4_sem">
-        <item>Maths IV/Engg. Science Course</item>
-        <item>Universal Human Values/ Technical Communication</item>
+        <item>Maths IV or Engg. Science Course</item>
+        <item>Universal Human Values or Technical Communication</item>
         <item>Operating Systems</item>
         <item>Theory of Automata and Formal Languages</item>
         <item>Microprocessor</item>
@@ -229,7 +229,7 @@
         <item>Compiler Design Lab</item>
         <item>Design and Analysis of Algorithm Lab</item>
         <item>Mini Project or Internship Assessment*</item>
-        <item>Constitution of India, Law and Engineering / Indian Tradition, Culture and Society</item>
+        <item>Constitution of India, Law and Engineering or Indian Tradition, Culture and Society</item>
     </string-array>
 
     <string-array name="CS_subjects_6_sem">
@@ -242,38 +242,38 @@
         <item>Software Engineering Lab</item>
         <item>Web Technology Lab</item>
         <item>Computer Networks Lab</item>
-        <item>Constitution of India, Law and Engineering / Indian Tradition, Culture and Society</item>
+        <item>Constitution of India, Law and Engineering or Indian Tradition, Culture and Society</item>
     </string-array>
 
     <string-array name="Electrical_subjects_1_sem">
         <item>Subject</item>
-        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Physics or Engineering Chemistry</item>
         <item>Engineering Mathematics-I</item>
-        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
-        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
-        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
-        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
-        <item>Programming for Problem Solving / English Language Lab</item>
-        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
-        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
+        <item>AI For Engineering or Emerging Technology for Engineering</item>
         <item>Soft Skill I</item>
     </string-array>
 
     <string-array name="Electrical_subjects_2_sem">
-        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Physics or Engineering Chemistry</item>
         <item>Engineering Mathematics-II</item>
-        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
-        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
-        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
-        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
-        <item>Programming for Problem Solving / English Language Lab</item>
-        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
-        <item>AI For Engineering/ Emerging Technology for Engineering</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
+        <item>AI For Engineering or Emerging Technology for Engineering</item>
         <item>Soft Skill II</item>
     </string-array>
     <string-array name="Electrical_subjects_3_sem">
-        <item>Engg. Science Course/Maths IV</item>
-        <item>Technical Communication/Universal Human values</item>
+        <item>Engg. Science Course or Maths IV</item>
+        <item>Technical Communication or Universal Human values</item>
         <item>Electromagnetic Field Theory</item>
         <item>Electrical Measurements and Instrumentation</item>
         <item>Basic Signals and Systems</item>
@@ -281,22 +281,22 @@
         <item>Electrical Measurements and Instrumentation Lab</item>
         <item>Electrical Workshop</item>
         <item>Mini Project or Internship Assessment*</item>
-        <item>Computer System Security/Python Programming</item>
+        <item>Computer System Security or Python Programming</item>
     </string-array>
 
     <string-array name="Electrical_subjects_4_sem">
-        <item>Maths IV/Engg. Science Course</item>
-        <item>Universal Human Values/Technical Communication</item>
+        <item>Maths IV or Engg. Science Course</item>
+        <item>Universal Human Values or Technical Communication</item>
         <item>Digital Electronics</item>
         <item>Electrical Machines-I</item>
         <item>Networks Analysis and Synthesis</item>
         <item>Circuit Simulation Lab</item>
         <item>Electrical Machines - I Lab</item>
         <item>Digital Electronics Lab</item>
-        <item>Python Programming/Computer System Security</item>
+        <item>Python Programming or Computer System Security</item>
     </string-array>
     <string-array name="Electrical_subjects_7_sem">
-        <item>HSMC -1 #/ HSMC-2 #</item>
+        <item>HSMC -1 or HSMC-2 </item>
         <item>Departmental Elective-IV</item>
         <item>Departmental Elective-V</item>
         <item>Open Elective-II</item>
@@ -306,7 +306,7 @@
     </string-array>
 
     <string-array name="Electrical_subjects_8_sem">
-        <item>HSMC-2#/HSMC-1#</item>
+        <item>HSMC-2 or HSMC-1</item>
         <item>Open Elective-III</item>
         <item>Open Elective-IV</item>
         <item>Projects</item>
@@ -316,10 +316,10 @@
         <item>Subject</item>
         <item>Engineering Physics/ Engineering Chemistry</item>
         <item>Engineering Mathematics-I</item>
-        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
         <item>Programming for Problem Solving Fundamentals of Mechanical Engineering and Mechatronics</item>
-        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
-        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
         <item>Programming for Problem Solving English Language Lab</item>
         <item>Engineering Graphics and Design L Mechanical Workshop Lab</item>
         <item>AI For Engineering/ Emerging Technology for Engineering</item>
@@ -327,21 +327,21 @@
     </string-array>
 
     <string-array name="IT_subjects_2_sem">
-        <item>Engineering Physics/ Engineering Chemistry</item>
+        <item>Engineering Physics or Engineering Chemistry</item>
         <item>Engineering Mathematics-II</item>
-        <item>Basic Electrical Engineering/ Emerging Domain in Electronics Engineering</item>
-        <item>Programming for Problem Solving / Fundamentals of Mechanical Engineering and Mechatronics</item>
-        <item>Engineering Physics Lab/ Engineering Chemistry Lab</item>
-        <item>Basic Electrical Engineering Lab/ Electronics Engineering Lab</item>
-        <item>Programming for Problem Solving / English Language Lab</item>
-        <item>Engineering Graphics and Design Lab/ Mechanical Workshop Lab</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
         <item>AI For Engineering/ Emerging Technology for Engineering</item>
         <item>Soft Skill I</item>
     </string-array>
 
     <string-array name="IT_subjects_3_sem">
-        <item>Engineering Science Course/Maths-IV</item>
-        <item>Technical Communication/Universal Human Values</item>
+        <item>Engineering Science Course or Maths-IV</item>
+        <item>Technical Communication or Universal Human Values</item>
         <item>Data Structure</item>
         <item>Computer Organization and Architecture</item>
         <item>Discrete Structures and Theory of Logic</item>
@@ -354,7 +354,7 @@
 
     <string-array name="IT_subjects_4_sem">
         <item>Maths IV/Engg. Science Course</item>
-        <item>Universal Human Values/Technical Communication</item>
+        <item>Universal Human Values or Technical Communication</item>
         <item>Operating Systems</item>
         <item>Theory of Automata and Formal Languages</item>
         <item>Web Designing</item>
@@ -389,15 +389,15 @@
         <item>Software Engineering Lab</item>
         <item>Data Analytics Lab</item>
         <item>Computer Networks Lab</item>
-        <item>Constitution of India, Law and Engineering / Indian Tradition, Culture and Society</item>
+        <item>Constitution of India, Law and Engineering or Indian Tradition, Culture and Society</item>
     </string-array>
 
     <string-array name="Mechanical_subjects_1_sem">
         <item>Subject</item>
         <item>Mathematics-I</item>
         <item>Engg. Physics-I</item>
-        <item>Engg. Chemistry/ Eng. Mechanics</item>
-        <item>Electrical Engg./ Computer Concepts and Programming in C</item>
+        <item>Engg. Chemistry or Eng. Mechanics</item>
+        <item>Electrical Engg. or Computer Concepts and Programming in C</item>
         <item>Electronics Engineering /Professional Communication</item>
         <item>Manufacturing Processes/ Environment Ecology and</item>
         <item>Engg. Chemistry Lab/ Engg. Lab Mechanics</item>
