@@ -101,7 +101,7 @@ public class Images_Student extends AppCompatActivity {
             {
                 for(int i=1;i<res.getStringArray(R.array.Civil_subjects_1_sem).length;i++)
                 {
-                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mca_subjects_1_sem)[i]));
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Civil_subjects_1_sem)[i]));
                 }
             }
             if(course_sem==2)
@@ -154,6 +154,308 @@ public class Images_Student extends AppCompatActivity {
                 }
             }
         }
+
+        if(course_name.equals("Electrical"))
+        {
+            if(course_sem==1)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_1_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_1_sem)[i]));
+                }
+            }
+            if(course_sem==2)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_2_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_2_sem)[i]));
+                }
+            }
+            if(course_sem==3)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_3_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_3_sem)[i]));
+                }
+            }
+            if(course_sem==4)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_4_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_4_sem)[i]));
+                }
+            }
+            if(course_sem==5)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_5_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_5_sem)[i]));
+                }
+            }
+            if(course_sem==6)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_6_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_6_sem)[i]));
+                }
+            }
+            if(course_sem==7)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_7_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_7_sem)[i]));
+                }
+            }
+            if(course_sem==8)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electrical_subjects_8_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electrical_subjects_8_sem)[i]));
+                }
+            }
+        }
+
+        if(course_name.equals("Electronics"))
+        {
+            if(course_sem==1)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_1_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_1_sem)[i]));
+                }
+            }
+            if(course_sem==2)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_2_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_2_sem)[i]));
+                }
+            }
+            if(course_sem==3)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_3_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_3_sem)[i]));
+                }
+            }
+//            if(course_sem==4)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_4_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_4_sem)[i]));
+//                }
+//            }
+//            if(course_sem==5)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_5_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_5_sem)[i]));
+//                }
+//            }
+//            if(course_sem==6)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_6_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_6_sem)[i]));
+//                }
+//            }
+//            if(course_sem==7)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_7_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_7_sem)[i]));
+//                }
+//            }
+//            if(course_sem==8)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.Electronics_subjects_8_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Electronics_subjects_8_sem)[i]));
+//                }
+//            }
+        }
+
+        if(course_name.equals("CS"))
+        {
+            if(course_sem==1)
+            {
+                for(int i=1;i<res.getStringArray(R.array.CS_subjects_1_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_1_sem)[i]));
+                }
+            }
+            if(course_sem==2)
+            {
+                for(int i=1;i<res.getStringArray(R.array.CS_subjects_2_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_2_sem)[i]));
+                }
+            }
+            if(course_sem==3)
+            {
+                for(int i=1;i<res.getStringArray(R.array.CS_subjects_3_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_3_sem)[i]));
+                }
+            }
+            if(course_sem==4)
+            {
+                for(int i=1;i<res.getStringArray(R.array.CS_subjects_4_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_4_sem)[i]));
+                }
+            }
+            if(course_sem==5)
+            {
+                for(int i=1;i<res.getStringArray(R.array.CS_subjects_5_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_5_sem)[i]));
+                }
+            }
+            if(course_sem==6)
+            {
+                for(int i=1;i<res.getStringArray(R.array.CS_subjects_6_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_6_sem)[i]));
+                }
+            }
+//            if(course_sem==7)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.CS_subjects_7_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_7_sem)[i]));
+//                }
+//            }
+//            if(course_sem==8)
+//            {
+//                for(int i=1;i<res.getStringArray(R.array.CS_subjects_8_sem).length;i++)
+//                {
+//                    Sub_List.add(new CourseModal(res.getStringArray(R.array.CS_subjects_8_sem)[i]));
+//                }
+//            }
+        }
+
+        if(course_name.equals("IT"))
+        {
+            if(course_sem==1)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_1_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_1_sem)[i]));
+                }
+            }
+            if(course_sem==2)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_2_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_2_sem)[i]));
+                }
+            }
+            if(course_sem==3)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_3_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_3_sem)[i]));
+                }
+            }
+            if(course_sem==4)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_4_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_4_sem)[i]));
+                }
+            }
+            if(course_sem==5)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_5_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_5_sem)[i]));
+                }
+            }
+            if(course_sem==6)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_6_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_6_sem)[i]));
+                }
+            }
+            if(course_sem==7)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_7_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_7_sem)[i]));
+                }
+            }
+            if(course_sem==8)
+            {
+                for(int i=1;i<res.getStringArray(R.array.IT_subjects_8_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.IT_subjects_8_sem)[i]));
+                }
+            }
+        }
+
+        if(course_name.equals("Mechanical"))
+        {
+            if(course_sem==1)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_1_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_1_sem)[i]));
+                }
+            }
+            if(course_sem==2)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_2_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_2_sem)[i]));
+                }
+            }
+            if(course_sem==3)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_3_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_3_sem)[i]));
+                }
+            }
+            if(course_sem==4)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_4_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_4_sem)[i]));
+                }
+            }
+            if(course_sem==5)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_5_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_5_sem)[i]));
+                }
+            }
+            if(course_sem==6)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_6_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_6_sem)[i]));
+                }
+            }
+            if(course_sem==7)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_7_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_7_sem)[i]));
+                }
+            }
+            if(course_sem==8)
+            {
+                for(int i=1;i<res.getStringArray(R.array.Mechanical_subjects_8_sem).length;i++)
+                {
+                    Sub_List.add(new CourseModal(res.getStringArray(R.array.Mechanical_subjects_8_sem)[i]));
+                }
+            }
+        }
+
+
     }
 
 }

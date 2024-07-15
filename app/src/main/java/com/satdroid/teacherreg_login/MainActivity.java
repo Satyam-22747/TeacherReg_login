@@ -405,6 +405,24 @@ private    String MCA_Course,Civil_Course,Mca_sem,Mca_sub,Civil_sub,Civil_sem;
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        electronics.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                for (int i = 1; i <= 8; i++) {
+                    if (parent.getItemAtPosition(position).toString().equals(String.valueOf(i))) {
+                        ArrayAdapter<CharSequence> adapterCSsub = ArrayAdapter.createFromResource(MainActivity.this, getResources().getIdentifier("Electronics_subjects" + i + "_sem", "array", getPackageName()), android.R.layout.simple_spinner_item);
+                        adapterCSsub.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                        electronicssub.setAdapter(adapterCSsub);
+                        break;
+                    }
+                }
+            }@Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
     }
 
     private void TextInputInit()

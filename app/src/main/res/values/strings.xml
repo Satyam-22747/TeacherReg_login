@@ -295,6 +295,31 @@
         <item>Digital Electronics Lab</item>
         <item>Python Programming or Computer System Security</item>
     </string-array>
+
+    <string-array name="Electrical_subjects_5_sem">
+        <item>Power System-I</item>
+        <item>Control System</item>
+        <item>Electrical Machines-II</item>
+        <item>Departmental Elective-I</item>
+        <item>Departmental Elective-II</item>
+        <item>Power System-I Lab</item>
+        <item>Electrical Machines - II Lab</item>
+        <item>Mini Project or Internship Assessment*</item>
+        <item>Constitution of India, Law and Engineering/ Indian Tradition, Culture and Society MOOCs</item>
+    </string-array>
+
+    <string-array name="Electrical_subjects_6_sem">
+        <item>Power System-II</item>
+        <item> Microprocessor and Microcontroller</item>
+        <item>Power Electronics</item>
+        <item>Departmental Elective- III</item>
+        <item>Open Elective-I</item>
+        <item>Power System-II Lab</item>
+        <item>Microprocessor and Microcontroller Lab</item>
+        <item>Power Electronics Lab</item>
+        <item>Constitution of India, Law and Engineering/ Indian Tradition, Culture and SocietyMOOCs </item>
+    </string-array>
+
     <string-array name="Electrical_subjects_7_sem">
         <item>HSMC -1 or HSMC-2 </item>
         <item>Departmental Elective-IV</item>
@@ -310,6 +335,46 @@
         <item>Open Elective-III</item>
         <item>Open Elective-IV</item>
         <item>Projects</item>
+    </string-array>
+
+    <string-array name="Electronics_subjects_1_sem">
+        <item>Subject</item>
+        <item>Engineering Physics or Engineering Chemistry</item>
+        <item>Engineering Mathematics-I</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
+        <item>AI For Engineering or Emerging Technology for Engineering</item>
+        <item>Soft Skill I</item>
+    </string-array>
+
+    <string-array name="Electronics_subjects_2_sem">
+        <item>Engineering Physics or Engineering Chemistry</item>
+        <item>Engineering Mathematics-II</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
+        <item>AI For Engineering or Emerging Technology for Engineering</item>
+        <item>Soft Skill II</item>
+    </string-array>
+
+    <string-array name="Electronics_subjects_3_sem">
+        <item>Engineering Physics or Engineering Chemistry</item>
+        <item>Engineering Mathematics-II</item>
+        <item>Basic Electrical Engineering or Emerging Domain in Electronics Engineering</item>
+        <item>Programming for Problem Solving or Fundamentals of Mechanical Engineering and Mechatronics</item>
+        <item>Engineering Physics Lab or Engineering Chemistry Lab</item>
+        <item>Basic Electrical Engineering Lab or Electronics Engineering Lab</item>
+        <item>Programming for Problem Solving or English Language Lab</item>
+        <item>Engineering Graphics and Design Lab or Mechanical Workshop Lab</item>
+        <item>AI For Engineering or Emerging Technology for Engineering</item>
+        <item>Soft Skill II</item>
     </string-array>
 
     <string-array name="IT_subjects_1_sem">
@@ -390,6 +455,17 @@
         <item>Data Analytics Lab</item>
         <item>Computer Networks Lab</item>
         <item>Constitution of India, Law and Engineering or Indian Tradition, Culture and Society</item>
+    </string-array>
+
+    <string-array name="IT_subjects_7_sem">
+        <item>Project Management &amp; Entrepreneurship</item>
+        <item>Operation Research</item>
+        <item>Mobile Computing</item>
+    </string-array>
+
+    <string-array name="IT_subjects_8_sem">
+        <item>DataWare housing &amp; Data Mining</item>
+        <item>Rural Development:Administration &amp; Planning</item>
     </string-array>
 
     <string-array name="Mechanical_subjects_1_sem">
